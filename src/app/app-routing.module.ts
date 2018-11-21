@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
+  },
+  {
+    path: 'question_management',
+    loadChildren: './question-management/question-management.module#QuestionManagementPageModule'
   }
 ];
 
