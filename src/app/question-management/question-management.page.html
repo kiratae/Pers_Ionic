@@ -1,27 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>question_management</ion-title>
+    <ion-buttons slot="start">
+        <ion-button (click)="back()">
+          <ion-icon name="arrow-back"></ion-icon>
+          กลับ
+        </ion-button>
+      </ion-buttons>
+    <ion-title>การจัดการคำถาม</ion-title>
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+
+  <ion-fab right bottom>
+    <button class="roundbutton" (click)="add()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 
   <!-- List of Sliding Items -->
-  <ion-list  *ngFor="let item of items; let i = index">
+  <ion-list  *ngFor="let question of questionLists; let i = index">
 
     <ion-item-sliding #slidingItem>
-      <ion-item>
-        <ion-label>{{item}}</ion-label>
+      <ion-item (click)="view(question.qt_id)">
+        <p>{{question.qt_text}}</p>
+        <p slot="end">{{(question.qt_type)?'ปรนัย':'อัตนัย'}}</p>
       </ion-item>
       <ion-item-options side="end">
-        <ion-item-option (click)="edit(item, slidingItem)" color="warning">
-          <ion-icon md="md-create"></ion-icon>
+        <ion-item-option (click)="edit(question.qt_id, slidingItem)" color="warning">
+          <ion-icon name="build" class="big-icon"></ion-icon>
         </ion-item-option>
-        <ion-item-option (click)="delete(item)" color="danger">
-          <ion-icon md="md-trash"></ion-icon>
+        <ion-item-option (click)="delete(question.qt_id, slidingItem)" color="danger">
+          <ion-icon name="trash" class="big-icon"></ion-icon>
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
