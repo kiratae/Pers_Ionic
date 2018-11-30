@@ -12,7 +12,7 @@ export class QuestionService {
   constructor(private http: Http) { }
 
   get_all() {
-    return this.http.get('http://10.80.6.160:1045/que').pipe(map((res) => res.json())
+    return this.http.get('http://10.80.6.160:1045/que').pipe(map((res) => res.json()))
   }
 
 }
