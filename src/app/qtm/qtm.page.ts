@@ -32,6 +32,7 @@ interface Question {
 })
 export class QTMPage implements OnInit {
 
+  private searchTerm: string;
   private questionLists: Question[];
   private meta: Meta;
 
@@ -87,14 +88,12 @@ export class QTMPage implements OnInit {
 
   }
 
-  onInput(event){
-    let val = event.target.value;
-    console.log(val)
+  ionChange(){
+    console.log(this.searchTerm)
   }
 
-  onCancel(event){
-    let val = event.target.value;
-    console.log(val)
+  onCancel(){
+    console.log('cancel')
   }
 
   back(){
