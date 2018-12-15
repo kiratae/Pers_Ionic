@@ -27,7 +27,7 @@ export class AppComponent {
     },
     {
       title: 'จัดการระดับวัดผล',
-      url: '/list',
+      url: '/lvm',
       icon: 'list'
     },
     {

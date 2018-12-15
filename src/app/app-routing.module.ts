@@ -30,7 +30,12 @@ const routes: Routes = [
   { 
     path: 'subm', 
     loadChildren: './subm/subm.module#SubmPageModule' 
+  },
+  { 
+    path: 'lvm', 
+    loadChildren: './lvm/lvm.module#LvmPageModule' 
   }
+
 
 ];
 
