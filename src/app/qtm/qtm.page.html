@@ -11,9 +11,9 @@
     </ion-buttons>
   </ion-toolbar>
 
-  <ion-searchbar animated showCancelButton cancelButtonText="ยกเลิก"
-    (ionInput)="onInput($value)"
-    (ionCancel)="onCancel($event)"
+  <ion-searchbar [(ngModel)]="searchTerm" animated showCancelButton cancelButtonText="ยกเลิก"
+    (ionChange)="ionChange()"
+    (ionCancel)="onCancel()"
   ></ion-searchbar>
 
 </ion-header>
