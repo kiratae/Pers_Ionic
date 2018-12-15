@@ -42,6 +42,7 @@ export class QTMPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.questionService.get_all().subscribe((response) => {
       this.meta = response['meta']
       console.log(this.meta.table)
