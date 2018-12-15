@@ -22,7 +22,7 @@ export class AppComponent {
     },
     {
       title: 'จัดการคำถาม',
-      url: '/question_management',
+      url: '/qtm',
       icon: 'list'
     },
     {

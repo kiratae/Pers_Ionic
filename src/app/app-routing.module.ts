@@ -16,8 +16,16 @@ const routes: Routes = [
     loadChildren: './list/list.module#ListPageModule'
   },
   {
-    path: 'question_management',
-    loadChildren: './question-management/question-management.module#QuestionManagementPageModule'
+    path: 'qtm',
+    loadChildren: './qtm/qtm.module#QTMPageModule'
+  },
+  {
+    path: 'insert_qt',
+    loadChildren: './qtm/insert-qt/insert-qt.module#InsertQTPageModule'
+  },
+  {
+    path: 'insert_qt_cho_1',
+    loadChildren: './qtm/insert-qt/insert-qt-cho-1.module#InsertQTCho1PageModule'
   }
 ];
 
