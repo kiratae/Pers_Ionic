@@ -1,7 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>subm</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>การจัดรายวิชา</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
+
+  <ion-searchbar animated showCancelButton cancelButtonText="ยกเลิก"
+    (ionInput)="onInput($value)"
+    (ionCancel)="onCancel($event)"
+  ></ion-searchbar>
+
 </ion-header>
 
 <ion-content padding>
