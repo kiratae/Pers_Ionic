@@ -26,7 +26,12 @@ const routes: Routes = [
   {
     path: 'insert_qt_cho_1',
     loadChildren: './qtm/insert-qt/insert-qt-cho-1.module#InsertQTCho1PageModule'
+  },
+  { 
+    path: 'subm', 
+    loadChildren: './subm/subm.module#SubmPageModule' 
   }
+
 ];
 
 @NgModule({
