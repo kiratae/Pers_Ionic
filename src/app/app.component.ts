@@ -17,7 +17,7 @@ export class AppComponent {
     },
     {
       title: 'จัดการรายวิชา',
-      url: '/list',
+      url: '/subm',
       icon: 'list'
     },
     {

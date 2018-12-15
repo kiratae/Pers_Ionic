@@ -11,11 +11,20 @@ interface Meta {
 }
 
 interface Question {
-  qt_id: number
-  qt_text: string
-  qt_status: number
-  qt_type: number
-}
+    qt_id: number
+    qt_text: string
+    qt_status: number
+    qt_type: number
+  }
+
+// interface Subjects {
+//   sub_id: number
+//   sub_code_th: string
+//   sub_code_en: string
+//   sub_name_th: string
+//   sub_name_en: string
+//   sub_objective: string
+// }
 
 @Component({
   selector: 'app-qtm',
@@ -26,7 +35,6 @@ export class QTMPage implements OnInit {
 
   private questionLists: Question[];
   private meta: Meta;
-  private searchTerm: string = '';
 
   constructor(
     private navCtrl: NavController,
@@ -81,12 +89,14 @@ export class QTMPage implements OnInit {
 
   }
 
-  ionChange(){ // on input search bar
-    console.log(this.searchTerm)
+  onInput(event){
+    let val = event.target.value;
+    console.log(val)
   }
 
-  onCancel(){ // on input search bar
-    console.log(this.searchTerm)
+  onCancel(event){
+    let val = event.target.value;
+    console.log(val)
   }
 
   back(){
