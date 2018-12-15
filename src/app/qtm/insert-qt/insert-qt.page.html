@@ -1,18 +1,26 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-button (click)="back()">
-        <ion-icon name="arrow-back"></ion-icon>
+          <ion-icon name="arrow-back" mode="ios"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>เพิ่มคำถาม</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <h4>
-    Step 1 : เลือกประเภทคำถาม
-  </h4>
-  <ion-button (click)="choicesType()" size="large" shape="round" expand="block" fill="outline">ปรนัย</ion-button>
-  <ion-button (click)="freeTextType()" size="large" shape="round" expand="block" fill="outline">อัตนัย</ion-button>
+<ion-content>
+  <ion-list mode="ios">
+    <ion-list-header>
+      Step 2 : เลือกประเภทคำถาม
+    </ion-list-header>
+    <ion-item (click)="choicesType()">
+      <ion-label>ปรนัย</ion-label>
+      <ion-icon name="arrow-dropright-circle" mode="ios" color="primary" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item (click)="freeTextType()">
+      <ion-label>อัตนัย</ion-label>
+      <ion-icon name="arrow-dropright-circle" mode="ios" color="primary" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
 </ion-content>
