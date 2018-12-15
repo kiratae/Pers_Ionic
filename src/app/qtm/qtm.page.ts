@@ -1,7 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ItemSliding, NavController, ToastController } from '@ionic/angular';
 import { QuestionService } from '../services/question.service'
-import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 interface Meta {
   table: string
@@ -39,8 +38,7 @@ export class QTMPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private questionService: QuestionService,
-    private toastCtrl: ToastController,
-    private statusBar: StatusBar
+    private toastCtrl: ToastController
   ) { }
 
   ngOnInit() {
