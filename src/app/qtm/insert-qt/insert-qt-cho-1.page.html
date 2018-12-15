@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>เพิ่มคำถาม</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+      <ion-list-header>
+        Step 2 : เพิ่มข้อมูลคำถาม
+      </ion-list-header>
+      <ion-item>
+        <ion-label>รายวิชา</ion-label>
+        <ion-select value="test" ok-text="ตกลง" cancel-text="ยกเลิก">
+          <ion-select-option value="test">Test</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>บทเรียน</ion-label>
+        <ion-select value="test" ok-text="ตกลง" cancel-text="ยกเลิก">
+          <ion-select-option value="test">Test</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>บทเรียนย่อย</ion-label>
+        <ion-select value="test" ok-text="ตกลง" cancel-text="ยกเลิก">
+          <ion-select-option value="test">Test</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>วัตถุประสงค์</ion-label>
+        <ion-select value="test" ok-text="ตกลง" cancel-text="ยกเลิก">
+          <ion-select-option value="test">Test</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">คำถาม</ion-label>
+        <ion-textarea rows="8" type="text"></ion-textarea>
+      </ion-item>
+    </ion-list>
+</ion-content>
