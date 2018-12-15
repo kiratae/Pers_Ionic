@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>เพิ่มคำถาม</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h4>
+    Step 1 : เลือกประเภทคำถาม
+  </h4>
+  <ion-button (click)="choicesType()" size="large" shape="round" expand="block" fill="outline">ปรนัย</ion-button>
+  <ion-button (click)="freeTextType()" size="large" shape="round" expand="block" fill="outline">อัตนัย</ion-button>
+</ion-content>
