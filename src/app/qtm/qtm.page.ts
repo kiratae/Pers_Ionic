@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { ItemSliding, NavController, ToastController } from '@ionic/angular';
 import { QuestionService } from '../services/question.service'
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 interface Meta {
   table: string
@@ -30,10 +31,12 @@ export class QTMPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private questionService: QuestionService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private statusBar: StatusBar
   ) { }
 
   ngOnInit() {
+
     this.questionService.get_all().subscribe((response) => {
       this.meta = response['meta']
       console.log(this.meta.table)

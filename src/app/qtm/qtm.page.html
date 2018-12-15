@@ -1,8 +1,8 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-button (click)="back()">
-        <ion-icon name="arrow-back"></ion-icon>
+        <ion-icon name="arrow-back" mode="ios"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>การจัดการคำถาม</ion-title>
@@ -10,11 +10,12 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
-
-  <ion-searchbar [(ngModel)]="searchTerm" animated showCancelButton cancelButtonText="ยกเลิก"
+  <ion-toolbar color="primary">
+  <ion-searchbar [(ngModel)]="searchTerm" mode="ios" animated showCancelButton cancelButtonText="ยกเลิก"
     (ionChange)="ionChange()"
     (ionCancel)="onCancel()"
   ></ion-searchbar>
+  </ion-toolbar>
 
 </ion-header>
 
@@ -30,11 +31,11 @@
   </ion-refresher>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <button class="roundbutton" (click)="add()"><ion-icon name="add"></ion-icon></button>
+    <button class="roundbutton" (click)="add()" color="primary"><ion-icon name="add" mode="ios"></ion-icon></button>
   </ion-fab>
 
   <!-- List of Sliding Items -->
-  <ion-list  *ngFor="let question of questionLists; let i = index">
+  <ion-list  *ngFor="let question of questionLists; let i = index" mode="ios">
 
     <ion-item-sliding #slidingItem>
       <ion-item (click)="view(question.qt_id)">
