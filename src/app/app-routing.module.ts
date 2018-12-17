@@ -37,13 +37,13 @@ const routes: Routes = [
   },
   { 
     path: 'insert_lv', 
-    loadChildren: './insert-lv/insert-lv.module#InsertLvPageModule' 
+    loadChildren: './lvm/insert-lv/insert-lv.module#InsertLvPageModule' 
   },
   { 
     path: 'insert_subm', 
     loadChildren: './subm/insert-subm/insert-subm.module#InsertSubmPageModule' 
   }
-  
+
 ];
 
 @NgModule({
