@@ -44,6 +44,7 @@ export class QTMPage implements OnInit {
         console.log(err.type)
         this.errToast()
     })
+    
   }
 
   async errToast() {

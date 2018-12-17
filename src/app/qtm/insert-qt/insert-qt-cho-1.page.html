@@ -10,19 +10,19 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list mode="ios">
       <ion-list-header>
         Step 2 : เพิ่มข้อมูลคำถาม
       </ion-list-header>
       <ion-item>
         <ion-label>รายวิชา</ion-label>
-        <ion-select value="test" ok-text="ตกลง" cancel-text="ยกเลิก">
-          <ion-select-option value="test">Test</ion-select-option>
+        <ion-select [(ngModel)]="subjectLists" mode="ios" value="test" ok-text="ตกลง" cancel-text="ยกเลิก">
+          <ion-select-option *ngFor="let subject of subjectLists; let i = index" value="subject.sub_id">{{subject.sub_code_th}} {{subject.sub_name_th}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>บทเรียน</ion-label>
-        <ion-select value="test" ok-text="ตกลง" cancel-text="ยกเลิก">
+        <ion-select mode="ios" value="test" ok-text="ตกลง" cancel-text="ยกเลิก">
           <ion-select-option value="test">Test</ion-select-option>
         </ion-select>
       </ion-item>
@@ -44,3 +44,6 @@
       </ion-item>
     </ion-list>
 </ion-content>
+<ion-footer translucent mode="ios" style="padding: 0 1vw">
+    <ion-button (click)="save()" color="primary" expand="block" size="large">บันทึก</ion-button>
+</ion-footer>
