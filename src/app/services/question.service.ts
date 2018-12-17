@@ -11,10 +11,8 @@ interface Question {
 }
 
 const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/x-www-form-urlencoded',
-  })
-}
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +30,7 @@ export class QuestionService {
 
     let data = { 'qt_id':qt_id,'qt_text':qt_text, 'qt_status':qt_status, 'qt_type':qt_type }
     console.log(data)
-    this.http.put('http://10.80.6.160:1045/que', JSON.stringify(data)).subscribe()
+    this.http.put('http://10.80.6.160:1045/que', JSON.stringify(data), httpOptions).subscribe()
   }
 
   delete(qt_id) {
