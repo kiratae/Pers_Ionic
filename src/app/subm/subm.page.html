@@ -11,10 +11,11 @@
     </ion-buttons>
   </ion-toolbar>
 
-  <ion-searchbar animated showCancelButton cancelButtonText="ยกเลิก"
-    (ionInput)="onInput($value)"
-    (ionCancel)="onCancel($event)"
-  ></ion-searchbar>
+  <ion-toolbar color="primary">
+      <ion-searchbar [(ngModel)]="searchTerm" mode="ios" animated showCancelButton cancelButtonText="ยกเลิก"
+        (ionChange)="ionChange()" (ionCancel)="onCancel()">
+      </ion-searchbar>
+  </ion-toolbar>
 
 </ion-header>
 
