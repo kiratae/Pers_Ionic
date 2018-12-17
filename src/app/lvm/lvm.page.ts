@@ -53,4 +53,7 @@ export class LvmPage implements OnInit {
     this.navCtrl.navigateBack('');
   }
 
+  add() {
+    this.navCtrl.navigateForward('insert_lv')
+  }
 }

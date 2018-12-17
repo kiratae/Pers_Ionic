@@ -31,6 +31,11 @@ export class AppComponent {
       icon: 'list'
     },
     {
+      title: 'จัดการบทเรียน',
+      url: '/chtm',
+      icon: 'list'
+    },
+    {
       title: 'รายงานผล',
       url: '/list',
       icon: 'list'
