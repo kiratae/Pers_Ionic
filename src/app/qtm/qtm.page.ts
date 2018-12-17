@@ -10,20 +10,11 @@ interface Meta {
 }
 
 interface Question {
-    qt_id: number
-    qt_text: string
-    qt_status: number
-    qt_type: number
-  }
-
-// interface Subjects {
-//   sub_id: number
-//   sub_code_th: string
-//   sub_code_en: string
-//   sub_name_th: string
-//   sub_name_en: string
-//   sub_objective: string
-// }
+  qt_id: number
+  qt_text: string
+  qt_status: number
+  qt_type: number
+}
 
 @Component({
   selector: 'app-qtm',
@@ -111,11 +102,14 @@ export class QTMPage implements OnInit {
 
   edit(id: any, slidingItem: ItemSliding) {
     console.log(`edit: ${id}`)
+    this.questionService.update(id, 'test update', 1, 1)
     slidingItem.close();
   }
 
-  delete(id: any, slidingItem: ItemSliding) {
+  delete(index:any, id: any, slidingItem: ItemSliding) {
     console.log(`delete: ${id}`)
+    this.questionService.delete(id)
+    this.questionLists.splice(index, 1);
     slidingItem.close();
   }
 
