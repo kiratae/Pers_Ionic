@@ -52,4 +52,8 @@ export class SubmPage implements OnInit {
   back(){
     this.navCtrl.navigateBack('');
   }
+
+  add(){
+    this.navCtrl.navigateForward('insert_subm');
+  }
 }
