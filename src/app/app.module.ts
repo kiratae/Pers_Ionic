@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { SubjectsService } from './services/subjects.service'
 import { QuestionService } from './services/question.service'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { QuestionService } from './services/question.service'
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule
   ],
