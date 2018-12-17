@@ -34,7 +34,8 @@ const routes: Routes = [
   { 
     path: 'lvm', 
     loadChildren: './lvm/lvm.module#LvmPageModule' 
-  }
+  },  { path: 'insert-lv', loadChildren: './insert-lv/insert-lv.module#InsertLvPageModule' }
+
 
 
 ];
