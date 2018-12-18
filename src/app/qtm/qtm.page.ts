@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { ItemSliding, NavController, ToastController } from '@ionic/angular';
+import { ItemSliding, NavController, ToastController, LoadingController, AlertController } from '@ionic/angular';
 import { QuestionService } from '../services/question.service'
 
 interface Meta {
@@ -12,8 +12,12 @@ interface Meta {
 interface Question {
   qt_id: number
   qt_text: string
+  lv_name_th: string
+  lv_name_eng: string
+  obj_name: string
   qt_status: number
-  qt_type: number
+  correct: number
+  incorrect: number
 }
 
 @Component({
@@ -30,33 +34,79 @@ export class QTMPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private questionService: QuestionService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private loadingController: LoadingController,
+    private alertController: AlertController
   ) { }
 
-  ionViewDidEnter() {
+  async ionViewDidEnter() {
+    const loading = await this.loadingController.create({
+      message: 'กำลังโหลด',
+      duration: 2000
+    })
+
+    loading.present()
+
     this.questionService.get_all().subscribe((response) => {
       this.meta = response['meta']
       console.log(this.meta.table)
       this.questionLists = response['data']
+      loading.dismiss()
     },
     err => {
+        loading.dismiss()
         console.log(err.type)
         this.errToast()
     })
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    const loading = await this.loadingController.create({
+      message: 'กำลังโหลด',
+      duration: 2000
+    })
+
+    loading.present()
 
     this.questionService.get_all().subscribe((response) => {
       this.meta = response['meta']
       console.log(this.meta.table)
       this.questionLists = response['data']
+
+      loading.dismiss()
     },
     err => {
+        loading.dismiss()
         console.log(err.type)
         this.errToast()
     })
     
+  }
+
+  async deleteConfirm(index, id) {
+    const alert = await this.alertController.create({
+      header: 'ยืนยันการลบข้อมูล',
+      message: 'แน่ใจ หรือไม่ที่ต้องการลบข้อมูลนี้',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'ตกลง',
+          handler: () => {
+            console.log('Confirm Okay')
+            this.questionService.delete(id)
+            this.questionLists.splice(index, 1)
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   async errToast() {
@@ -122,9 +172,8 @@ export class QTMPage implements OnInit {
 
   delete(index:any, id: any, slidingItem: ItemSliding) {
     console.log(`delete: ${id}`)
-    this.questionService.delete(id)
-    this.questionLists.splice(index, 1);
-    slidingItem.close();
+    slidingItem.close()
+    this.deleteConfirm(index, id)
   }
 
 }
