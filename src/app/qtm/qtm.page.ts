@@ -33,6 +33,18 @@ export class QTMPage implements OnInit {
     private toastCtrl: ToastController
   ) { }
 
+  ionViewDidEnter() {
+    this.questionService.get_all().subscribe((response) => {
+      this.meta = response['meta']
+      console.log(this.meta.table)
+      this.questionLists = response['data']
+    },
+    err => {
+        console.log(err.type)
+        this.errToast()
+    })
+  }
+
   ngOnInit() {
 
     this.questionService.get_all().subscribe((response) => {

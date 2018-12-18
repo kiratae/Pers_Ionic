@@ -63,4 +63,9 @@ export class InsertQTCho1Page implements OnInit {
     this.navCtrl.navigateBack('insert_qt');
   }
 
+  save(){
+    console.log('save!');
+    this.navCtrl.navigateBack('qtm');
+  }
+
 }
