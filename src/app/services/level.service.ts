@@ -27,7 +27,10 @@ export class LevelService {
   }
 
   insert(lv_name_th, lv_name_eng, lv_status) {
+    console.log(lv_name_th)
+    console.log(lv_name_eng)
+    console.log(lv_status)
     let data = { 'lv_name_th':lv_name_th, 'lv_name_eng':lv_name_eng, 'lv_status':lv_status }
-    this.http.post('http://10.80.6.160:1045/lvl', JSON.stringify(data))
+    this.http.post('http://10.80.6.160:1045/lvl', JSON.stringify(data), httpOptions).subscribe()
   }
 }
