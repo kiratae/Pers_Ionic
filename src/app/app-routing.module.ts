@@ -42,7 +42,12 @@ const routes: Routes = [
   { 
     path: 'insert_subm', 
     loadChildren: './subm/insert-subm/insert-subm.module#InsertSubmPageModule' 
+  },
+  { 
+    path: 'edit_lv', 
+    loadChildren: './lvm/edit-lv/edit-lv.module#EditLvPageModule' 
   }
+
 
 ];
 
