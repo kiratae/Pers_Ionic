@@ -46,6 +46,10 @@ const routes: Routes = [
   { 
     path: 'update_qt/:id',
     loadChildren: './qtm/update-qt/update-qt.module#UpdateQtPageModule'
+  },
+  {
+    path: 'edit_lv', 
+    loadChildren: './lvm/edit-lv/edit-lv.module#EditLvPageModule' 
   }
 
 

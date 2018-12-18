@@ -33,4 +33,15 @@ export class LevelService {
     let data = { 'lv_name_th':lv_name_th, 'lv_name_eng':lv_name_eng, 'lv_status':lv_status }
     this.http.post('http://10.80.6.160:1045/lvl', JSON.stringify(data), httpOptions).subscribe()
   }
+  delete(lv_id) {
+    console.log('Deleting : lv_id = '+lv_id)
+    this.http.delete('http://10.80.6.160:1045/lvl/'+lv_id).subscribe((res: any) => {
+    }, error => console.log(error))
+  }
+  update(qt_id, qt_text, qt_status, qt_type) {
+
+    let data = { 'qt_id':qt_id,'qt_text':qt_text, 'qt_status':qt_status, 'qt_type':qt_type }
+    console.log(data)
+    this.http.put('http://10.80.6.160:1045/que', JSON.stringify(data), httpOptions).subscribe()
+  }
 }
