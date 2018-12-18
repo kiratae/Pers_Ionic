@@ -116,6 +116,7 @@ export class QTMPage implements OnInit {
   edit(id: any, slidingItem: ItemSliding) {
     console.log(`edit: ${id}`)
     // this.questionService.update(id, 'test update', 1, 1)
+    this.navCtrl.navigateForward(`update_qt/${id}`)
     slidingItem.close();
   }
 

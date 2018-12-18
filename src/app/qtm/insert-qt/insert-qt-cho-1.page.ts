@@ -5,6 +5,7 @@ import { ChapterService } from '../../services/chapter.service'
 import { SubchapterService } from '../../services/subchapter.service'
 import { ObjectiveService } from '../../services/objective.service'
 import { QuestionService } from '../../services/question.service'
+import { QuestionMatchingService } from '../../services/question-matching.service'
 
 interface Subjects {
   sub_id: number
@@ -75,6 +76,7 @@ export class InsertQTCho1Page implements OnInit {
     private subchapterService: SubchapterService,
     private objectiveService: ObjectiveService,
     private questionService: QuestionService,
+    private questionMatchingService: QuestionMatchingService,
     private toastCtrl: ToastController
   ) { }
 
@@ -142,6 +144,7 @@ export class InsertQTCho1Page implements OnInit {
 
   enabled_qt(){
     let obj_id = this.data["obj_id"]
+    console.log(obj_id);
     if(obj_id != null)
       this.isQtDisabled = false
     else
@@ -163,9 +166,20 @@ export class InsertQTCho1Page implements OnInit {
     let cht_id = this.data["cht_id"]
     let scht_id = this.data["scht_id"]
     let obj_id = this.data["obj_id"]
+    let qt_id = 0
+
     console.log(`save! ${sub_id} ${cht_id} ${scht_id} ${obj_id} ${qt_text}`)
-    let qt_id = this.questionService.insert(qt_text, 1, 1)
-    console.log(qt_id)
+
+    this.questionService.insert(qt_text, 1, 1).subscribe((res: any) => {
+      console.log(res['qt_id'])
+      qt_id = res['qt_id']
+
+      this.questionMatchingService.insert(scht_id, obj_id, qt_id).subscribe((res: any) => {
+        console.log(res['qm_id'])
+      }, error => console.log(error))
+  
+    }, error => console.log(error))
+    
     this.navCtrl.navigateBack('qtm');
   }
 

@@ -42,7 +42,12 @@ const routes: Routes = [
   { 
     path: 'insert_subm', 
     loadChildren: './subm/insert-subm/insert-subm.module#InsertSubmPageModule' 
+  },
+  { 
+    path: 'update_qt/:id',
+    loadChildren: './qtm/update-qt/update-qt.module#UpdateQtPageModule'
   }
+
 
 ];
 
