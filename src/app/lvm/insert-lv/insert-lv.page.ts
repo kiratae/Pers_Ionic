@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, BackButton } from '@ionic/angular';
 import { LevelService } from '../../services/level.service'
 
 @Component({
@@ -20,13 +20,16 @@ export class InsertLvPage implements OnInit {
     
   }
 
+
+  
   back(){
     this.navCtrl.navigateBack('lvm');
   }
+
   form_post(){
     console.log(this.data)
     this.levelService.insert(this.data["lv_name_th"],this.data["lv_name_eng"],1)
-    setTimeout(function(){  }, 1500);
-    this.navCtrl.navigateBack('lvm') 
+   // setTimeout(() => { this.ionViewWillEnter() }, 3000)
+    this.navCtrl.navigateForward('lvm');
   }
 }

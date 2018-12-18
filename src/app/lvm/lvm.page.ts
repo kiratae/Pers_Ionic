@@ -8,7 +8,12 @@ interface Level {
      lv_name_eng: string
      lv_status: number
    }
-
+   interface Meta {
+    table: string
+    type: string
+    total: number
+    total_entries: number
+  }
 
 
 @Component({
@@ -18,8 +23,10 @@ interface Level {
 })
 export class LvmPage implements OnInit {
 
-
+  private searchTerm: string;
   private levelLists: Level[];
+  private meta: Meta;
+
   constructor(
     private navCtrl: NavController,
     private levelService: LevelService,
@@ -28,8 +35,8 @@ export class LvmPage implements OnInit {
     
   ngOnInit() {
     this.levelService.get_all().subscribe((response) => {
-      //  this.meta = response['meta']
-      //  console.log(this.meta.table)
+        this.meta = response['meta']
+        console.log(this.meta.table)
         this.levelLists = response['data']
       },
       err => {
@@ -49,11 +56,40 @@ export class LvmPage implements OnInit {
     toast.present();
   }
 
+  ionViewDidEnter() {
+    this.levelService.get_all().subscribe((response) => {
+      this.meta = response['meta']
+      console.log(this.meta.table)
+      this.levelLists = response['data']
+    },
+    err => {
+        console.log(err.type)
+        this.errToast()
+    })
+  }
+
+  doRefresh() {
+    console.log('Begin async question');
+
+    this.levelService.get_all().subscribe((response) => {
+      this.meta = response['meta']
+      console.log(this.meta.table)
+      this.levelLists = response['data']
+    })
+
+  }
+
   back(){
     this.navCtrl.navigateBack('');
   }
 
   add() {
     this.navCtrl.navigateForward('insert_lv')
+  }
+  delete(index:any, id: any, slidingItem: ItemSliding) {
+    console.log(`delete: ${id}`)
+    this.levelService.delete(id)
+    this.levelLists.splice(index, 1);
+    slidingItem.close();
   }
 }
