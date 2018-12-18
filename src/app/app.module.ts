@@ -11,7 +11,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { SubjectsService } from './services/subjects.service'
+import { ChapterService } from './services/chapter.service'
 import { QuestionService } from './services/question.service'
+
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -28,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     SubjectsService,
+    ChapterService,
     QuestionService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

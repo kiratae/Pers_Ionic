@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { SubjectsService } from '../../services/subjects.service'
+import { ChapterService } from '../../services/chapter.service'
+import { SubchapterService } from '../../services/subchapter.service'
+import { ObjectiveService } from '../../services/objective.service'
+import { QuestionService } from '../../services/question.service'
 
 interface Subjects {
   sub_id: number
@@ -9,6 +13,31 @@ interface Subjects {
   sub_name_th: string
   sub_name_en: string
   sub_objective: string
+}
+
+interface Chapter {
+  cht_id: number
+  cht_sequnce: number
+  cht_code: string
+  cht_name: string
+  cht_status: number
+  cht_sub_id: number
+}
+
+interface Subchapter {
+  scht_id: number
+  scht_sequnce: number
+  scht_name: string
+  scht_status: number
+  scht_cht_id: number
+}
+
+interface Objective {
+  obj_id: number
+  obj_name: string
+  obj_status: number
+  obj_scht_id: number
+  obj_lv_id: number
 }
 
 interface Meta {
@@ -25,12 +54,27 @@ interface Meta {
 })
 export class InsertQTCho1Page implements OnInit {
 
-  private subjectLists: Subjects[];
-  private meta: Meta;
+  private subjectLists: Subjects[]
+  private chataptertLists: Chapter[]
+  private subchataptertLists: Subchapter[]
+  private objectiveLists: Objective[]
+  private meta: Meta
+
+  private isChtDisabled: boolean = true
+  private isSchtDisabled: boolean = true
+  private isObjDisabled: boolean = true
+  private isQtDisabled: boolean = true
+  private isSaveBtnDisabled: boolean = true
+
+  private data = {}
 
   constructor(
     private navCtrl: NavController,
     private subjectsService: SubjectsService,
+    private chapterService: ChapterService,
+    private subchapterService: SubchapterService,
+    private objectiveService: ObjectiveService,
+    private questionService: QuestionService,
     private toastCtrl: ToastController
   ) { }
 
@@ -63,8 +107,65 @@ export class InsertQTCho1Page implements OnInit {
     this.navCtrl.navigateBack('insert_qt');
   }
 
+  fetch_cht(){
+    let sub_id = this.data["sub_id"]
+    console.log(sub_id);
+    this.chapterService.fecth(sub_id).subscribe((response) => {
+      this.meta = response['meta']
+      console.log(this.meta.table)
+      this.chataptertLists = response['data']
+      this.isChtDisabled = false
+    })
+  }
+
+  fetch_scht(){
+    let cht_id = this.data["cht_id"]
+    console.log(cht_id);
+    this.subchapterService.fecth(cht_id).subscribe((response) => {
+      this.meta = response['meta']
+      console.log(this.meta.table)
+      this.subchataptertLists = response['data']
+      this.isSchtDisabled = false
+    })
+  }
+
+  fetch_obj(){
+    let scht_id = this.data["scht_id"]
+    console.log(scht_id);
+    this.objectiveService.fecth(scht_id).subscribe((response) => {
+      this.meta = response['meta']
+      console.log(this.meta.table)
+      this.objectiveLists = response['data']
+      this.isObjDisabled = false
+    })
+  }
+
+  enabled_qt(){
+    let obj_id = this.data["obj_id"]
+    if(obj_id != null)
+      this.isQtDisabled = false
+    else
+      this.isQtDisabled = true
+    
+  }
+
+  enabled_save_btn(){
+    let qt_text: string = this.data["qt_text"]
+    if(qt_text != '')
+      this.isSaveBtnDisabled = false
+    else
+      this.isSaveBtnDisabled = true
+  }
+
   save(){
-    console.log('save!');
+    let qt_text = this.data["qt_text"]
+    let sub_id = this.data["sub_id"]
+    let cht_id = this.data["cht_id"]
+    let scht_id = this.data["scht_id"]
+    let obj_id = this.data["obj_id"]
+    console.log(`save! ${sub_id} ${cht_id} ${scht_id} ${obj_id} ${qt_text}`)
+    let qt_id = this.questionService.insert(qt_text, 1, 1)
+    console.log(qt_id)
     this.navCtrl.navigateBack('qtm');
   }
 
