@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core';
-import { ItemSliding, NavController, ToastController, LoadingController, AlertController } from '@ionic/angular';
+import { Component, OnInit, Input} from '@angular/core';
+import { ItemSliding, NavController, ToastController, LoadingController, AlertController, ModalController } from '@ionic/angular';
 import { QuestionService } from '../services/question.service'
+import { UpdateQtPage } from './update-qt/update-qt.page';
 
 interface Meta {
   table: string
@@ -27,6 +28,7 @@ interface Question {
 })
 export class QTMPage implements OnInit {
 
+  @Input('qt_text_input') qt_text_input: number;
   private searchTerm: string;
   private questionLists: Question[];
   private meta: Meta;
@@ -36,7 +38,8 @@ export class QTMPage implements OnInit {
     private questionService: QuestionService,
     private toastCtrl: ToastController,
     private loadingController: LoadingController,
-    private alertController: AlertController
+    private alertController: AlertController,
+    public modalController: ModalController
   ) { }
 
   async ionViewDidEnter() {
@@ -166,8 +169,8 @@ export class QTMPage implements OnInit {
   edit(id: any, slidingItem: ItemSliding) {
     console.log(`edit: ${id}`)
     // this.questionService.update(id, 'test update', 1, 1)
+    slidingItem.close()
     this.navCtrl.navigateForward(`update_qt/${id}`)
-    slidingItem.close();
   }
 
   delete(index:any, id: any, slidingItem: ItemSliding) {
