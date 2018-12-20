@@ -62,11 +62,11 @@ const routes: Routes = [
 
   },
   {
-    path: 'insert-cho-correct',
+    path: 'insert-cho-correct/:id',
     loadChildren: './qtm/insert-qt/insert-cho-correct/insert-cho-correct.module#InsertChoCorrectPageModule'
   },
   {
-    path: 'insert-cho-incorrect',
+    path: 'insert-cho-incorrect/:id',
     loadChildren: './qtm/insert-qt/insert-cho-incorrect/insert-cho-incorrect.module#InsertChoIncorrectPageModule'
   },
 
