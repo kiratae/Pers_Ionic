@@ -29,6 +29,7 @@ export class ChtmPage implements OnInit {
   private chapterLists: Chapter[];
   private chapter:Chapter;
   private meta: Meta;
+  private sub_id;
 
   constructor(
     private navCtrl: NavController,
@@ -44,9 +45,10 @@ export class ChtmPage implements OnInit {
 
   ngOnInit() {
     let cht_id = this.route.snapshot.paramMap.get('id_cht')
-    let sub_id = this.route.snapshot.paramMap.get('id')
-    console.log(sub_id)
-    this.chapterService.fecth(sub_id).subscribe((response) => {
+    this.sub_id = this.route.snapshot.paramMap.get('id')
+
+    console.log(this.sub_id)
+    this.chapterService.fecth(this.sub_id).subscribe((response) => {
         this.meta = response['meta']
         console.log(response['data'])
         this.chapterLists = response['data']
@@ -72,8 +74,8 @@ export class ChtmPage implements OnInit {
     this.navCtrl.navigateBack('subm');
   }
 
-  add(){
-    this.navCtrl.navigateForward('insert_chtm');
+  add(sub_id){
+    this.navCtrl.navigateForward('insert_chtm/'+sub_id);
   }
 
   delete(index:any, id: any, slidingItem: ItemSliding) {

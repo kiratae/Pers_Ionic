@@ -27,10 +27,10 @@ export class ChapterService {
     return this.http.get('http://10.80.6.160:1045/cht/'+sub_id)
   }
 
-  insert(cht_name, cht_status) {
+  insert(cht_sequence, cht_code, cht_name, cht_status, cht_sub_id) {
     console.log(cht_name)
     console.log(cht_status)
-    let data = { 'cht_name':cht_name, 'cht_status':cht_status }
+    let data = { 'cht_sequence':cht_sequence, 'cht_code':cht_code, 'cht_name':cht_name, 'cht_status':cht_status, 'cht_sub_id':cht_sub_id}
     this.http.post('http://10.80.6.160:1045/cht', JSON.stringify(data), httpOptions).subscribe()
   }
 

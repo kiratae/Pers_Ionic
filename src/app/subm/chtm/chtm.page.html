@@ -20,7 +20,7 @@
 
 <ion-content >
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <button class="roundbutton" (click)="add()" color="primary"><ion-icon name="add" mode="ios"></ion-icon></button>
+    <button class="roundbutton" (click)="add(sub_id)" color="primary"><ion-icon name="add" mode="ios"></ion-icon></button>
   </ion-fab>
 
   <ion-list  *ngFor="let chapter of chapterLists; let i = index">
