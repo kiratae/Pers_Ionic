@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemSliding, NavController, AlertController, ToastController } from '@ionic/angular';
+import { ItemSliding, NavController, ToastController, LoadingController, AlertController, ModalController } from '@ionic/angular';
 import { SubjectsService } from '../services/subjects.service'
 
 interface Subjects {
@@ -26,6 +26,8 @@ export class SubmPage implements OnInit {
     private subjectsService: SubjectsService,
     private toastCtrl: ToastController,
     private alertController: AlertController,
+    private loadingController: LoadingController,
+    public modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -98,5 +100,7 @@ export class SubmPage implements OnInit {
         }
       ]
     });
+
+    await alert.present();
   }
 }
