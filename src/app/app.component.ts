@@ -13,32 +13,37 @@ export class AppComponent {
     {
       title: 'หน้าแรก',
       url: '/home',
-      icon: 'home'
+      img: 'assets/icon/home.png'
     },
     {
       title: 'จัดการรายวิชา',
       url: '/subm',
-      icon: 'list'
-    },
-    {
-      title: 'จัดการคำถาม',
-      url: '/qtm',
-      icon: 'list'
+      img: 'assets/icon/sub.png'
     },
     {
       title: 'จัดการระดับวัดผล',
       url: '/lvm',
-      icon: 'list'
+      img: 'assets/icon/level.png'
     },
     {
-      title: 'จัดการบทเรียน',
+      title: 'จัดการคำถาม',
+      url: '/qtm',
+      img: 'assets/icon/question.png'
+    },
+    {
+      title: 'จัดการชุดข้อสอบ',
+      url: '/qtm',
+      img: 'assets/icon/exam.png'
+    },
+    {
+      title: 'จัดการเฉลยชุดข้อสอบ',
       url: '/chtm',
-      icon: 'list'
+      img: 'assets/icon/answer.png'
     },
     {
       title: 'รายงานผล',
       url: '/list',
-      icon: 'list'
+      img: 'assets/icon/dashboard.png'
     }
   ];
 
