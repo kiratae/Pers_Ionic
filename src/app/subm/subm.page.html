@@ -23,7 +23,7 @@
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <button class="roundbutton" (click)="add()" color="primary"><ion-icon name="add" mode="ios"></ion-icon></button>
       </ion-fab>
-  <ion-list  *ngFor="let subjects of subjectsLists; let i = index">
+  <ion-list  *ngFor="let subjects of subjectsLists; let i = index" (click)="toChtm(subjects.sub_id, slidingItem)"> 
 
     <ion-item-sliding #slidingItem>
       <ion-item >
@@ -32,7 +32,7 @@
       </ion-item>
       <ion-item-options side="end">
         <ion-item-option  color="warning">
-          <ion-icon name="create" class="big-icon" mode="md"></ion-icon>
+          <ion-icon name="create" class="big-icon" mode="md" (click)="edit(subjects.sub_id, slidingItem)"></ion-icon>
         </ion-item-option>
         <ion-item-option  color="danger">
           <ion-icon name="trash" class="big-icon" (click)="delete(i, subjects.sub_id, slidingItem)"></ion-icon>
