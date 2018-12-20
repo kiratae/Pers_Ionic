@@ -64,8 +64,15 @@ const routes: Routes = [
     path: 'chtm/:id', 
     loadChildren: './subm/chtm/chtm.module#ChtmPageModule' 
 
-  },  { path: 'insert-cho-correct', loadChildren: './qtm/insert-qt/insert-cho-correct/insert-cho-correct.module#InsertChoCorrectPageModule' },
-  { path: 'insert-cho-incorrect', loadChildren: './qtm/insert-qt/insert-cho-incorrect/insert-cho-incorrect.module#InsertChoIncorrectPageModule' }
+  },
+  {
+    path: 'insert-cho-correct',
+    loadChildren: './qtm/insert-qt/insert-cho-correct/insert-cho-correct.module#InsertChoCorrectPageModule'
+  },
+  {
+    path: 'insert-cho-incorrect',
+    loadChildren: './qtm/insert-qt/insert-cho-incorrect/insert-cho-incorrect.module#InsertChoIncorrectPageModule'
+  }
 
 
 
