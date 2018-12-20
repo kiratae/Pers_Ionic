@@ -5,7 +5,10 @@
             <ion-icon name="arrow-back" mode="ios"></ion-icon>
         </ion-button>
       </ion-buttons>
-    <ion-title>เพิ่มคำถาม</ion-title>
+    <ion-title>เพิ่มคำถาม{{type==1?'ปรนัย':'อัตนัย'}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="save()" disabled="{{isSaveBtnDisabled}}">{{type==1?'ต่อไป':'บันทึก'}}</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -44,7 +47,3 @@
       </ion-item>
     </ion-list>
 </ion-content>
-
-<ion-footer translucent mode="ios" style="padding: 0 1vw">
-    <ion-button (click)="save()" color="primary" expand="block" size="large" disabled="{{isSaveBtnDisabled}}">บันทึก</ion-button>
-</ion-footer>
