@@ -89,8 +89,7 @@ export class UpdateQtPage implements OnInit {
   }
 
   save(){
-    // let qt_text = this.data["qt_text"]
-    let qt_text = this.myInput.value
+    let qt_text = this.data["qt_text"]
 
     if(this.question.qt_id != 0){
       console.log(`update! ${this.question.qt_id} ${qt_text}`)

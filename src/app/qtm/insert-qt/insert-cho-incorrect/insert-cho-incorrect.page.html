@@ -1,9 +1,44 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>insert-cho-incorrect</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding>
-
-</ion-content>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-button (click)="back()">
+            <ion-icon name="arrow-back" mode="ios"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>เพิ่มตัวเลือกลวง</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="save()">บันทึก</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="add_row()" color="primary"><ion-icon name="add" mode="ios"></ion-icon></ion-fab-button>
+    </ion-fab>
+  
+    <ion-list>
+  
+      <ion-list-header>
+        Step 2-1 : เพิ่มข้อมูลตัวเลือกลวง
+      </ion-list-header>
+  
+      <ion-item-group *ngFor="let item of choiceLists;let i = index; trackBy: customTrackBy">
+        <ion-item lines="none">
+          <ion-label position="floating">ตัวเลือกลวง</ion-label>
+          <ion-textarea rows="4" [(ngModel)]="choiceLists[i].text"></ion-textarea>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="floating">ค่า P</ion-label>
+          <ion-input type="number" [(ngModel)]="choiceLists[i].P"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="floating">ค่า r</ion-label>
+          <ion-input type="number" [(ngModel)]="choiceLists[i].r"></ion-input>
+        </ion-item>
+      </ion-item-group>
+  
+    </ion-list>
+        
+  </ion-content>

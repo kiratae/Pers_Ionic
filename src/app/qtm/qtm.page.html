@@ -42,8 +42,8 @@
         <ion-label text-wrap>
           {{question.qt_text}}
           <p><small>วัตถุประสงค์ : {{question.obj_name}}</small></p>
-          <p><small>ประเภทคำถาม : {{(question.qt_type)?'ปรนัย':'อัตนัย'}}</small></p>
-          <ion-row>
+          <p><small>ประเภทคำถาม : {{(question.qt_type==1)?'ปรนัย':'อัตนัย'}}</small></p>
+          <ion-row *ngIf="question.qt_type == 1">
             <ion-col size="6">
               <ion-button size="small" expand="block" fill="clear" color="medium">
                 <p>{{question.correct}} ตัวเลือกที่ถูก</p>

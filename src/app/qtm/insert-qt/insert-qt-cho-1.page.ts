@@ -6,6 +6,7 @@ import { SubchapterService } from '../../services/subchapter.service'
 import { ObjectiveService } from '../../services/objective.service'
 import { QuestionService } from '../../services/question.service'
 import { QuestionMatchingService } from '../../services/question-matching.service'
+import { ActivatedRoute } from '@angular/router';
 
 interface Subjects {
   sub_id: number
@@ -68,6 +69,7 @@ export class InsertQTCho1Page implements OnInit {
   private isSaveBtnDisabled: boolean = true
 
   private data = {}
+  private type
 
   constructor(
     private navCtrl: NavController,
@@ -77,8 +79,14 @@ export class InsertQTCho1Page implements OnInit {
     private objectiveService: ObjectiveService,
     private questionService: QuestionService,
     private questionMatchingService: QuestionMatchingService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private route: ActivatedRoute
   ) { }
+
+  ionViewDidEnter(){
+    this.type = this.route.snapshot.paramMap.get('id')
+    console.log(this.type)
+  }
 
   ngOnInit() {
 
@@ -170,17 +178,22 @@ export class InsertQTCho1Page implements OnInit {
 
     console.log(`save! ${sub_id} ${cht_id} ${scht_id} ${obj_id} ${qt_text}`)
 
-    this.questionService.insert(qt_text, 1, 1).subscribe((res: any) => {
+    this.questionService.insert(qt_text, 1, this.type).subscribe((res: any) => {
       console.log(res['qt_id'])
       qt_id = res['qt_id']
 
       this.questionMatchingService.insert(scht_id, obj_id, qt_id).subscribe((res: any) => {
         console.log(res['qm_id'])
+        if(this.type == 1){
+          this.navCtrl.navigateForward('insert-cho-correct/'+qt_id)
+        }else{
+          this.navCtrl.navigateBack('qtm')
+        }
+        
       }, error => console.log(error))
   
     }, error => console.log(error))
-    
-    this.navCtrl.navigateBack('qtm');
+
   }
 
 }
