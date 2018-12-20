@@ -35,6 +35,15 @@ const routes: Routes = [
     path: 'lvm', 
     loadChildren: './lvm/lvm.module#LvmPageModule' 
   },
+
+  { path: 'chtm', 
+  loadChildren: './chtm/chtm.module#ChtmPageModule' 
+  },
+  
+  { 
+  path: 'schtm/:id', 
+  loadChildren: './schtm/schtm.module#SchtmPageModule' 
+  },
   { 
     path: 'insert_lv', 
     loadChildren: './lvm/insert-lv/insert-lv.module#InsertLvPageModule' 
@@ -50,7 +59,14 @@ const routes: Routes = [
   {
     path: 'edit_lv/:id', 
     loadChildren: './lvm/edit-lv/edit-lv.module#EditLvPageModule' 
+  },
+  { 
+    path: 'chtm/:id', 
+    loadChildren: './subm/chtm/chtm.module#ChtmPageModule' 
+
   }
+
+
 
 
 ];

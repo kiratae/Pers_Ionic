@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemSliding, NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-chtm',
