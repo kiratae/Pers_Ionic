@@ -1,9 +1,25 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>chtm</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>การจัดเรียน</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar color="primary">
+      <ion-searchbar [(ngModel)]="searchTerm" mode="ios" animated showCancelButton cancelButtonText="ยกเลิก"
+        (ionChange)="ionChange()" (ionCancel)="onCancel()">
+      </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <button class="roundbutton" (click)="add()" color="primary"><ion-icon name="add" mode="ios"></ion-icon></button>
+  </ion-fab>
 </ion-content>

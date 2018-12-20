@@ -35,14 +35,13 @@ const routes: Routes = [
     path: 'lvm', 
     loadChildren: './lvm/lvm.module#LvmPageModule' 
   },
-
-  { path: 'chtm', 
-  loadChildren: './chtm/chtm.module#ChtmPageModule' 
-  },
-  
   { 
   path: 'schtm/:id', 
-  loadChildren: './schtm/schtm.module#SchtmPageModule' 
+  loadChildren: './subm/schtm/schtm.module#SchtmPageModule' 
+  },
+  {
+    path: 'insert_schtm',
+    loadChildren: './subm/insert-schtm/insert_schtm.module#InsertSchtmPageModule'
   },
   { 
     path: 'insert_lv', 
