@@ -1,9 +1,26 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>choModal</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>ตัวเลือก{{type==1?'ที่ถูก':'ลวง'}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+          <ion-icon name="arrow-down" mode="ios"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+
+<ion-list mode="ios">
+
+  <ion-item *ngFor="let row_cho of arr_cho; let i = index">
+    <ion-label text-wrap>
+      {{row_cho.cho_text}}
+      <p><small>ค่า P : {{row_cho.chi_P}}</small></p>
+      <p><small>ค่า r : {{row_cho.chi_r}}</small></p>
+    </ion-label>
+  </ion-item>
+
+</ion-list>
 
 </ion-content>

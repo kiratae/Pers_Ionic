@@ -15,9 +15,11 @@ import { ChapterService } from './services/chapter.service'
 import { QuestionService } from './services/question.service'
 
 import { HttpClientModule } from '@angular/common/http';
+import { ChoModalPage } from './qtm/cho-modal/cho-modal.page';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ChoModalPage ],
+  entryComponents: [ ChoModalPage ],
   imports: [
     BrowserModule,
     HttpModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemSliding, NavController, ToastController, LoadingController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-insert-obj',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InsertObjPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private navCtrl: NavController,
+    private toastCtrl: ToastController
+  ) { }
 
   ngOnInit() {
   }
-
+  back(){
+    this.navCtrl.navigateBack('objm/:id');
+  }
 }

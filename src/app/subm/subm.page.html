@@ -2,7 +2,7 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-button (click)="back()">
-        <ion-icon name="arrow-back"></ion-icon>
+        <ion-icon name="arrow-back" mode="ios"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>การจัดรายวิชา</ion-title>
@@ -23,19 +23,18 @@
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <button class="roundbutton" (click)="add()" color="primary"><ion-icon name="add" mode="ios"></ion-icon></button>
       </ion-fab>
-  <ion-list  *ngFor="let subjects of subjectsLists; let i = index">
+  <ion-list mode="ios"> 
 
-    <ion-item-sliding #slidingItem>
-      <ion-item >
+    <ion-item-sliding #slidingItem  *ngFor="let subjects of subjectsLists; let i = index">
+      <ion-item (click)="toChtm(subjects.sub_id, slidingItem)">
         {{subjects.sub_code_th}} {{subjects.sub_name_th}}
-        
       </ion-item>
       <ion-item-options side="end">
-        <ion-item-option  color="warning">
+        <ion-item-option  color="warning" (click)="edit(subjects.sub_id, slidingItem)">
           <ion-icon name="create" class="big-icon" mode="md"></ion-icon>
         </ion-item-option>
-        <ion-item-option  color="danger">
-          <ion-icon name="trash" class="big-icon" (click)="delete(i, subjects.sub_id, slidingItem)"></ion-icon>
+        <ion-item-option  color="danger" (click)="delete(i, subjects.sub_id, slidingItem)">
+          <ion-icon name="trash" class="big-icon"></ion-icon>
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
