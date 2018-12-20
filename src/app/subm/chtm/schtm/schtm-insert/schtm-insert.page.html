@@ -10,25 +10,13 @@
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
     </ion-toolbar>
-    <ion-toolbar color="primary">
-    <ion-searchbar [(ngModel)]="searchTerm" mode="ios" animated showCancelButton cancelButtonText="ยกเลิก"
-      (ionChange)="ionChange()"
-      (ionCancel)="onCancel()"
-    ></ion-searchbar>
-    </ion-toolbar>
-  
 </ion-header>
 
 <ion-content padding>
     <ion-item>
-        <ion-label position="floating">รหัสวิชาภาษาไทย</ion-label>
+        <ion-label position="floating">ชื่อบทเรียนย่อย</ion-label>
         <ion-input></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">ชื่อวิชาภาษาไทย</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-
+      </ion-item>  
 </ion-content>
 
 <ion-footer translucent mode="ios" style="padding: 0 1vw">
