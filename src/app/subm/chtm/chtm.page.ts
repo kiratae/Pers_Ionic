@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemSliding, NavController, ToastController } from '@ionic/angular';
+import { ItemSliding, NavController, ToastController, LoadingController, AlertController, ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { ChapterService } from '../../services/chapter.service'
 
@@ -33,8 +33,11 @@ export class ChtmPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private chapterService: ChapterService,
+    private alertController: AlertController,
     private route: ActivatedRoute,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private loadingController: LoadingController,
+    public modalController: ModalController
     
   ) {this.chapter = { 'cht_id':0,'cht_sequence':0,'cht_code':'','cht_name':'','cht_status':0,'cht_sub_id':0 }}
 
@@ -71,4 +74,36 @@ export class ChtmPage implements OnInit {
   add(){
     this.navCtrl.navigateForward('insert_chtm');
   }
+
+  delete(index:any, id: any, slidingItem: ItemSliding) {
+    console.log(`delete: ${id}`)
+    slidingItem.close();
+    this.deleteConfirm(index, id)
+  }
+  async deleteConfirm(index, id) {
+    const alert = await this.alertController.create({
+      header: 'ยืนยันการลบข้อมูล',
+      message: 'แน่ใจ หรือไม่ที่ต้องการลบข้อมูลนี้',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'ตกลง',
+          handler: () => {
+            console.log('Confirm Okay')
+            this.chapterService.delete(id)
+            this.chapterLists.splice(index, 1)
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+  
 }

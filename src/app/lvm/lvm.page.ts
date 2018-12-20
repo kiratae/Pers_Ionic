@@ -117,6 +117,7 @@ export class LvmPage implements OnInit {
   }
   edit(id: any, slidingItem: ItemSliding) {
     console.log(`edit: ${id}`)
+    slidingItem.close()
     this.navCtrl.navigateForward(`edit_lv/${id}`)
   }
   delete(index:any, id: any, slidingItem: ItemSliding) {

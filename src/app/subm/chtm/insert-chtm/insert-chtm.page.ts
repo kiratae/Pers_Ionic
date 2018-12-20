@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemSliding, NavController, ToastController } from '@ionic/angular';
+import { NavController, BackButton } from '@ionic/angular';
+import { ChapterService } from '../../../services/chapter.service'
 
 @Component({
   selector: 'app-insert-chtm',
@@ -8,9 +9,10 @@ import { ItemSliding, NavController, ToastController } from '@ionic/angular';
 })
 export class InsertChtmPage implements OnInit {
 
+  data = {}
   constructor(
     private navCtrl: NavController,
-    private toastCtrl: ToastController
+    private chapterService: ChapterService
   ) { }
 
   ngOnInit() {
@@ -19,4 +21,11 @@ export class InsertChtmPage implements OnInit {
   back(){
     this.navCtrl.navigateBack('chtm/:id');
   }
+  form_post(){
+    console.log(this.data)
+    this.chapterService.insert(this.data["cht_name"],1)
+   // setTimeout(() => { this.ionViewWillEnter() }, 3000)
+    this.navCtrl.navigateForward('chtm/:id');
+  }
+
 }
