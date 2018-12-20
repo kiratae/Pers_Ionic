@@ -43,7 +43,7 @@ const routes: Routes = [
   { 
   path: 'schtm/:id', 
   loadChildren: './schtm/schtm.module#SchtmPageModule' 
-
+  },
   { 
     path: 'insert_lv', 
     loadChildren: './lvm/insert-lv/insert-lv.module#InsertLvPageModule' 
