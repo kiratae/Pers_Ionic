@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemSliding, NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-insert-chtm',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InsertChtmPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private navCtrl: NavController,
+    private toastCtrl: ToastController
+  ) { }
 
   ngOnInit() {
   }
 
+  back(){
+    this.navCtrl.navigateBack('chtm/:id');
+  }
 }

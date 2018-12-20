@@ -1,9 +1,25 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>insert_chtm</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>การจัดการบทเรียน</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+    <ion-item>
+      <ion-label position="floating">ชื่อ</ion-label>
+      <ion-input  ></ion-input>
+    </ion-item>  
 </ion-content>
+
+<ion-footer translucent mode="ios" style="padding: 0 1vw">
+  <ion-button color="success" expand="block" size="large">บันทึก</ion-button>
+</ion-footer>
