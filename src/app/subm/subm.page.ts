@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemSliding, NavController, ToastController } from '@ionic/angular';
+import { ItemSliding, NavController, AlertController, ToastController } from '@ionic/angular';
 import { SubjectsService } from '../services/subjects.service'
 
 interface Subjects {
@@ -9,6 +9,7 @@ interface Subjects {
   sub_name_th: string
   sub_name_en: string
   sub_objective: string
+  sub_status: number
 }
 
 @Component({
@@ -23,7 +24,8 @@ export class SubmPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private subjectsService: SubjectsService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private alertController: AlertController,
   ) { }
 
   ngOnInit() {
@@ -49,11 +51,52 @@ export class SubmPage implements OnInit {
     toast.present();
   }
 
+  doRefresh() {
+    console.log('Begin async question');
+
+    this.subjectsService.get_all().subscribe((response) => {
+      //this.meta = response['meta']
+      //console.log(this.meta.table)
+      this.subjectsLists = response['data']
+    })
+
+  }
+
   back(){
     this.navCtrl.navigateBack('');
   }
 
   add(){
     this.navCtrl.navigateForward('insert_subm');
+  }
+
+  delete(index:any, id: any, slidingItem: ItemSliding) {
+    console.log(`delete: ${id}`)
+    slidingItem.close();
+    this.deleteConfirm(index, id)
+  }
+
+  async deleteConfirm(index, id) {
+    const alert = await this.alertController.create({
+      header: 'ยืนยันการลบข้อมูล',
+      message: 'แน่ใจ หรือไม่ที่ต้องการลบข้อมูลนี้',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'ตกลง',
+          handler: () => {
+            console.log('Confirm Okay')
+            this.subjectsService.delete(id)
+            this.subjectsLists.splice(index, 1)
+          }
+        }
+      ]
+    });
   }
 }
