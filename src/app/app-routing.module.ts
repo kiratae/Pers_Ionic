@@ -101,7 +101,12 @@ const routes: Routes = [
   { 
     path: 'edit_subm', 
     loadChildren: './subm/edit-subm/edit-subm.module#EditSubmPageModule' 
+  },
+  {
+    path: 'choModal',
+    loadChildren: './qtm/cho-modal/cho-modal.module#ChoModalPageModule'
   }
+
 
 
 
