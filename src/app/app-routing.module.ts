@@ -73,7 +73,33 @@ const routes: Routes = [
   { 
   path: 'schtm_insert', 
   loadChildren: './subm/chtm/schtm/schtm-insert/schtm-insert.module#SchtmInsertPageModule' 
+  },
+  { path: 'insert_chtm', 
+  loadChildren: './subm/chtm/insert-chtm/insert-chtm.module#InsertChtmPageModule' 
+  },
+
+  { 
+    path: 'objm/:id', 
+    loadChildren: './subm/chtm/schtm/objm/objm.module#ObjmPageModule' 
+  },
+  { 
+    path: 'insert_obj', 
+    loadChildren: './subm/chtm/schtm/objm/insert-obj/insert-obj.module#InsertObjPageModule' 
+  },
+  {
+    path: 'edit_objm', 
+    loadChildren: './subm/chtm/schtm/edit-objm/edit-objm.module#EditObjmPageModule' 
+  },
+  { 
+    path: 'edit_chtm', 
+    loadChildren: './subm/chtm/edit-chtm/edit-chtm.module#EditChtmPageModule' 
+  },
+  { 
+    path: 'edit_schtm', 
+    loadChildren: './subm/chtm/schtm/edit-schtm/edit-schtm.module#EditSchtmPageModule' 
   }
+
+
 
 
 
