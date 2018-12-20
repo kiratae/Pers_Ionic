@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemSliding, NavController, ToastController } from '@ionic/angular';
+import { ItemSliding, NavController, ToastController, LoadingController, AlertController, ModalController } from '@ionic/angular';
 import { LevelService } from '../services/level.service'
 
 interface Level {
@@ -30,7 +30,10 @@ export class LvmPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private levelService: LevelService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    public modalController: ModalController
   ) { }
     
   ngOnInit() {
@@ -43,6 +46,32 @@ export class LvmPage implements OnInit {
           console.log(err.type)
           this.errToast()
       })
+  }
+
+  async deleteConfirm(index, id) {
+    const alert = await this.alertController.create({
+      header: 'ยืนยันการลบข้อมูล',
+      message: 'แน่ใจ หรือไม่ที่ต้องการลบข้อมูลนี้',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'ตกลง',
+          handler: () => {
+            console.log('Confirm Okay')
+            this.levelService.delete(id)
+            this.levelLists.splice(index, 1)
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   async errToast() {
@@ -92,8 +121,7 @@ export class LvmPage implements OnInit {
   }
   delete(index:any, id: any, slidingItem: ItemSliding) {
     console.log(`delete: ${id}`)
-    this.levelService.delete(id)
-    this.levelLists.splice(index, 1);
     slidingItem.close();
+    this.deleteConfirm(index, id)
   }
 }
