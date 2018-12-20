@@ -103,4 +103,25 @@ export class SubmPage implements OnInit {
 
     await alert.present();
   }
+
+  edit(id: any, slidingItem: ItemSliding) {
+    console.log(`edit: ${id}`)
+    this.navCtrl.navigateForward(`edit_subm/${id}`)
+  }
+
+  ionViewDidEnter() {
+    this.subjectsService.get_all().subscribe((response) => {
+      //this.meta = response['meta']
+     // console.log(this.meta.table)
+      this.subjectsLists = response['data']
+    },
+    err => {
+        console.log(err.type)
+        this.errToast()
+    })
+  }
+
+  toChtm(id: any, slidingItem: ItemSliding){
+    this.navCtrl.navigateForward(`chtm/${id}`)
+  }
 }
