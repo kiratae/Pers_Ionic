@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionService } from 'src/app/services/question.service';
-import { ToastController, NavController, LoadingController } from '@ionic/angular';
+import { ToastController, NavController, LoadingController, NavParams } from '@ionic/angular';
 
 interface Meta {
   table: string
@@ -36,7 +36,8 @@ export class UpdateQtPage implements OnInit {
     private navCtrl: NavController,
     private questionService: QuestionService,
     private toastCtrl: ToastController,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    // public navParams: NavParams
   ) {
     this.question = { 'qt_id':0,'qt_text':'','qt_status':1,'qt_type':1 }
   }
@@ -88,7 +89,8 @@ export class UpdateQtPage implements OnInit {
   }
 
   save(){
-    let qt_text = this.data["qt_text"]
+    // let qt_text = this.data["qt_text"]
+    let qt_text = this.myInput.value
 
     if(this.question.qt_id != 0){
       console.log(`update! ${this.question.qt_id} ${qt_text}`)
