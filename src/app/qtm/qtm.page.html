@@ -38,7 +38,7 @@
   <ion-list mode="ios">
 
     <ion-item-sliding #slidingItem *ngFor="let question of questionLists; let i = index">
-      <ion-item (click)="view(question.qt_id)">
+      <ion-item>
         <ion-label text-wrap>
           {{question.qt_text}}
           <p><small>วัตถุประสงค์ : {{question.obj_name}}</small></p>
