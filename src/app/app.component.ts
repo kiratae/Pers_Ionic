@@ -13,37 +13,44 @@ export class AppComponent {
     {
       title: 'หน้าแรก',
       url: '/home',
-      img: 'assets/icon/home.png'
+      img: 'assets/icon/home.png',
+      status: false
     },
     {
       title: 'จัดการรายวิชา',
       url: '/subm',
-      img: 'assets/icon/sub.png'
+      img: 'assets/icon/sub.png',
+      status: false
     },
     {
       title: 'จัดการระดับวัดผล',
       url: '/lvm',
-      img: 'assets/icon/level.png'
+      img: 'assets/icon/level.png',
+      status: false
     },
     {
       title: 'จัดการคำถาม',
       url: '/qtm',
-      img: 'assets/icon/question.png'
+      img: 'assets/icon/question.png',
+      status: false
     },
     {
-      title: 'จัดการชุดข้อสอบ',
+      title: 'อยู่ระหว่างการพัฒนา...',
       url: '/qtm',
-      img: 'assets/icon/exam.png'
+      img: 'assets/icon/exam_mono.png',
+      status: true
     },
     {
-      title: 'จัดการเฉลยชุดข้อสอบ',
+      title: 'อยู่ระหว่างการพัฒนา...',
       url: '/chtm',
-      img: 'assets/icon/answer.png'
+      img: 'assets/icon/answer_mono.png',
+      status: true
     },
     {
-      title: 'รายงานผล',
+      title: 'อยู่ระหว่างการพัฒนา...',
       url: '/list',
-      img: 'assets/icon/dashboard.png'
+      img: 'assets/icon/dashboard_mono.png',
+      status: true
     }
   ];
 
