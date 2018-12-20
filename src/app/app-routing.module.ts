@@ -50,7 +50,12 @@ const routes: Routes = [
   {
     path: 'edit_lv', 
     loadChildren: './lvm/edit-lv/edit-lv.module#EditLvPageModule' 
+  },
+  { 
+    path: 'chtm/:id', 
+    loadChildren: './subm/chtm/chtm.module#ChtmPageModule' 
   }
+
 
 
 ];
