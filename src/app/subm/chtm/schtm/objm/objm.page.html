@@ -25,11 +25,11 @@
         <ion-fab-button (click)="add()" color="primary"><ion-icon name="add" mode="ios"></ion-icon></ion-fab-button>
       </ion-fab>
 
-      <ion-list  *ngFor="let chapter of chapterLists; let i = index">
+      <ion-list  *ngFor="let objective of objectiveLists; let i = index">
 
           <ion-item-sliding #slidingItem>
             <ion-item >
-              {{chapter.obj_name}} {{chapter.obj_lv_id}}
+              {{objective.obj_name}} {{objective.obj_lv_id}}
               
             </ion-item>
             <ion-item-options side="end">

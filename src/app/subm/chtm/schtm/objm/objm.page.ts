@@ -10,7 +10,7 @@ interface Meta {
   total_entries: number
 }
 
-interface Chapter {
+interface Objective {
   obj_id: number
   obj_name: string
   obj_status: number
@@ -25,16 +25,18 @@ interface Chapter {
 })
 export class ObjmPage implements OnInit {
 
-  private chapterLists: Chapter[];
-  private chapter:Chapter;
+  private objectiveLists: Objective[];
+  private objective: Objective;
   private meta: Meta;
 
   constructor(
     private navCtrl: NavController,
     private objectiveService: ObjectiveService,
     private route: ActivatedRoute,
-    private toastCtrl: ToastController
-  ) { this.chapter = { 'obj_id':0,'obj_name':'','obj_status':0,'obj_scht_id':0,'obj_lv_id':0}}
+    private toastCtrl: ToastController,
+    private loadingController: LoadingController,
+    private alertController: AlertController
+  ) { this.objective = { 'obj_id':0,'obj_name':'','obj_status':0,'obj_scht_id':0,'obj_lv_id':0}}
 
   ngOnInit() {
     let obj_scht_id = this.route.snapshot.paramMap.get('id')
@@ -42,7 +44,7 @@ export class ObjmPage implements OnInit {
     this.objectiveService.fecth(obj_scht_id).subscribe((response) => {
         this.meta = response['meta']
         console.log(response['data'])
-        this.chapterLists = response['data']
+        this.objectiveLists = response['data']
       },
     err => {
           console.log(err.type)
@@ -91,7 +93,7 @@ export class ObjmPage implements OnInit {
           handler: () => {
             console.log('Confirm Okay')
             this.objectiveService.delete(id)
-            this.objectiveService.splice(index, 1)
+            this.objectiveLists.splice(index, 1)
           }
         }
       ]
