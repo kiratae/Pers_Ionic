@@ -17,11 +17,11 @@
 <ion-content >
 <ion-item>
         <ion-label position="floating">ชื่อระดับการวัดผลภาษาไทย</ion-label>
-        <ion-input [(ngModel)]="data.lv_name_th" #lv_name_eng_input value="{{level.lv_name_th}}"></ion-input>
+        <ion-input [(ngModel)]="data.lv_name_th" #lv_name_th_input [value]="level.lv_name_th"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">ชื่อระดับการวัดผลภาษาอังกฤษ</ion-label>
-        <ion-input   [(ngModel)]="data.lv_name_eng" #lv_name_eng_input value="{{level.lv_name_eng}}"></ion-input>
+        <ion-input   [(ngModel)]="data.lv_name_eng" [value]="level.lv_name_eng"></ion-input>
       </ion-item>
 </ion-content>
 <ion-footer translucent mode="ios" style="padding: 0 1vw">

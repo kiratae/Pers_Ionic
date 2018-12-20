@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemSliding, NavController, ToastController } from '@ionic/angular';
-//import { ChapterService } from '../../services/chapter.service'
+import { ActivatedRoute } from '@angular/router';
+import { ChapterService } from '../../services/chapter.service'
 
-//interface Chapter {
-  //cht_id: number
-  //cht_sequence: number
-  //cht_code: string
-  //cht_name: string
-  //cht_status: number
-  //cht_sub_id: number
-//}
+interface Meta {
+  table: string
+  type: string
+  total: number
+  total_entries: number
+}
+
+interface Chapter {
+  cht_id: number
+  cht_sequence: number
+  cht_code: string
+  cht_name: string
+  cht_status: number
+  cht_sub_id: number
+}
 
 @Component({
   selector: 'app-chtm',
@@ -18,36 +26,43 @@ import { ItemSliding, NavController, ToastController } from '@ionic/angular';
 })
 export class ChtmPage implements OnInit {
 
-  //private chapterLists: Chapter[];
+  private chapterLists: Chapter[];
+  private chapter:Chapter;
+  private meta: Meta;
 
   constructor(
     private navCtrl: NavController,
-    //private chapterService: ChapterService,
+    private chapterService: ChapterService,
+    private route: ActivatedRoute,
     private toastCtrl: ToastController
-  ) { }
+    
+  ) {this.chapter = { 'cht_id':0,'cht_sequence':0,'cht_code':'','cht_name':'','cht_status':0,'cht_sub_id':0 }}
+
 
   ngOnInit() {
-    //this.chapterService.fecth(this.cht_sub_id).subscribe((response) => {
-      //  this.meta = response['meta']
-      //  console.log(this.meta.table)
-      //  this.chapterService = response['data']
-      //},
-      //err => {
-        //  console.log(err.type)
-        //  this.errToast()
-      //})
+    let sub_id = this.route.snapshot.paramMap.get('id')
+    console.log(sub_id)
+    this.chapterService.fecth(sub_id).subscribe((response) => {
+        this.meta = response['meta']
+        console.log(response['data'])
+        this.chapterLists = response['data']
+      },
+    err => {
+          console.log(err.type)
+          this.errToast()
+      })
   }
 
-  //async errToast() {
-    //const toast = await this.toastCtrl.create({
-      //message: 'มีบางอย่างผิดพลาด! อภัยในความไม่สะดวก',
-      //showCloseButton: true,
-      //position: 'middle',
-      //closeButtonText: 'ตกลง',
-      //color: "danger"
-    //});
-    //toast.present();
-  //}
+  async errToast() {
+    const toast = await this.toastCtrl.create({
+      message: 'มีบางอย่างผิดพลาด! อภัยในความไม่สะดวก',
+      showCloseButton: true,
+      position: 'middle',
+      closeButtonText: 'ตกลง',
+      color: "danger"
+    });
+    toast.present();
+  }
 
   back(){
     this.navCtrl.navigateBack('subm');
