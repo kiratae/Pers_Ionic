@@ -23,6 +23,25 @@
   
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button (click)="add()" color="primary"><ion-icon name="add" mode="ios"></ion-icon></ion-fab-button>
-      </ion-fab>
+    </ion-fab>
+
+    <ion-list  *ngFor="let subchapter of subchapterLists; let i = index">
+
+        <ion-item-sliding #slidingItem>
+          <ion-item >
+            {{subchapter.scht_sequence}} {{subchapter.scht_name}}
+            
+          </ion-item>
+          <ion-item-options side="end">
+              <ion-item-option  color="warning">
+                <ion-icon name="build" class="big-icon"></ion-icon>
+              </ion-item-option>
+              <ion-item-option  color="danger">
+                <ion-icon name="trash" class="big-icon"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+      
+    </ion-list>
 
 </ion-content>
