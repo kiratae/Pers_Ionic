@@ -37,7 +37,8 @@ const routes: Routes = [
   },
   { path: 'chtm', 
   loadChildren: './chtm/chtm.module#ChtmPageModule' 
-  }
+  },  { path: 'schtm', loadChildren: './schtm/schtm.module#SchtmPageModule' }
+
 
 
 
