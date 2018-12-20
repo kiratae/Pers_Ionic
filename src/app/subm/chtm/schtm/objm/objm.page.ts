@@ -68,4 +68,35 @@ export class ObjmPage implements OnInit {
   add(){
     this.navCtrl.navigateForward('insert_obj');
   }
+
+  delete(index:any, id: any, slidingItem: ItemSliding) {
+    console.log(`delete: ${id}`)
+    slidingItem.close();
+    this.deleteConfirm(index, id)
+  }
+  async deleteConfirm(index, id) {
+    const alert = await this.alertController.create({
+      header: 'ยืนยันการลบข้อมูล',
+      message: 'แน่ใจ หรือไม่ที่ต้องการลบข้อมูลนี้',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'ตกลง',
+          handler: () => {
+            console.log('Confirm Okay')
+            this.objectiveService.delete(id)
+            this.objectiveService.splice(index, 1)
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 }
