@@ -45,22 +45,17 @@ export class EditLvPage implements OnInit {
       console.log(lv_id)
 
       
-      const loading = await this.loadingController.create({
-        message: 'กำลังโหลด',
-        duration: 2000,
-        mode: 'ios'
-      })
+
 
       
       this.levelService.get_by_key(lv_id).subscribe((response) => {
         this.meta = response['meta']
-        // console.log(this.meta.table)
+         console.log(this.meta.table)
         this.level = response['data'][0]
         console.log(this.level)
         this.myInput.setFocus()
       },
       err => {
-        loading.dismiss()
         console.log(err.type)
         this.errToast()
       })
