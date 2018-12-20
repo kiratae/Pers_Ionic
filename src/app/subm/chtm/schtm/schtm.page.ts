@@ -21,7 +21,7 @@ export class SchtmPage implements OnInit {
 
   constructor(
     private navCtrl: NavController,
-    private subchapterService: subchapterService,
+    //private subchapterService: subchapterService,
     private toastCtrl: ToastController,
     private loadingController: LoadingController,
     private alertController: AlertController
