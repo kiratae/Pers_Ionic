@@ -136,4 +136,7 @@ export class ChtmPage implements OnInit {
       this.errToast()
     })
   }
+  toSchtm(id: any, slidingItem: ItemSliding){
+    this.navCtrl.navigateForward(`schtm/${id}`)
+  }
 }

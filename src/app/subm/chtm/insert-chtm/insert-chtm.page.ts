@@ -23,8 +23,8 @@ export class InsertChtmPage implements OnInit {
     this.sub_id = this.route.snapshot.paramMap.get('id')
   }
 
-  back(){
-    this.navCtrl.navigateBack('chtm/:id');
+  back(sub_id){
+    this.navCtrl.navigateBack('chtm/'+sub_id);
   }
   form_post(sub_id){
     console.log(this.data)

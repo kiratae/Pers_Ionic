@@ -21,6 +21,7 @@ export class EditChtmPage implements OnInit {
 
   @ViewChild('sub_code_th_input') myInput;
 
+  private sub_id;
   private chapter: Chapter;
   private data = {}
 
@@ -35,7 +36,7 @@ export class EditChtmPage implements OnInit {
 
   async ionViewDidEnter(){
     let cht_id = this.route.snapshot.paramMap.get('id_cht')
-    let sub_id = this.route.snapshot.paramMap.get('id')
+    this.sub_id = this.route.snapshot.paramMap.get('id')
     console.log(cht_id)
 
     const loading = await this.loadingController.create({
@@ -46,7 +47,7 @@ export class EditChtmPage implements OnInit {
 
     loading.present()
     
-    this.chapterService.get_by_edit(sub_id,cht_id).subscribe((response) => {
+    this.chapterService.get_by_edit(this.sub_id,cht_id).subscribe((response) => {
       //this.meta = response['meta']
       //console.log(this.meta.table)
       this.chapter = response['data'][0]
@@ -91,7 +92,7 @@ export class EditChtmPage implements OnInit {
     }
   }
 
-  back(){
-    this.navCtrl.navigateBack('/chtm');
+  back(sub_id){
+    this.navCtrl.navigateBack('/chtm/'+sub_id);
   }
 }
