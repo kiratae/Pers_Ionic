@@ -66,6 +66,37 @@ export class SchtmPage implements OnInit {
     this.navCtrl.navigateBack('chtm/:id');
   }
 
+  delete(index:any, id: any, slidingItem: ItemSliding) {
+    console.log(`delete: ${id}`)
+    slidingItem.close();
+    this.deleteConfirm(index, id)
+  }
+  async deleteConfirm(index, id) {
+    const alert = await this.alertController.create({
+      header: 'ยืนยันการลบข้อมูล',
+      message: 'แน่ใจ หรือไม่ที่ต้องการลบข้อมูลนี้',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'ตกลง',
+          handler: () => {
+            console.log('Confirm Okay')
+            this.subchapterService.delete(id)
+            this.subchapterLists.splice(index, 1)
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
   add(){
     this.navCtrl.navigateForward('schtm_insert');
   }
