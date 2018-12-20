@@ -95,7 +95,7 @@ const routes: Routes = [
     loadChildren: './subm/chtm/edit-chtm/edit-chtm.module#EditChtmPageModule' 
   },
   { 
-    path: 'edit_schtm/:id', 
+    path: 'edit_schtm/:id/:id_scht', 
     loadChildren: './subm/chtm/schtm/edit-schtm/edit-schtm.module#EditSchtmPageModule' 
   },
   { 

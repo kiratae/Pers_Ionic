@@ -36,8 +36,11 @@ export class SchtmPage implements OnInit {
     private loadingController: LoadingController,
     private route: ActivatedRoute,
     private alertController: AlertController
+
   ) {this.subchapter = { 'scht_id':0,'scht_cht_id':0,'scht_sequence':'','scht_name':'','scht_status':0}}
+
   ngOnInit() {
+    let scht_id = this.route.snapshot.paramMap.get('id_scht')
     let sub_id = this.route.snapshot.paramMap.get('id')
     console.log(sub_id)
     this.subchapterService.fecth(sub_id).subscribe((response) => {
@@ -99,6 +102,35 @@ export class SchtmPage implements OnInit {
 
   add(){
     this.navCtrl.navigateForward('schtm_insert');
+  }
+
+  edit(id_scht: any,id: any, slidingItem: ItemSliding) {
+    console.log(`edit: ${id}`)
+    console.log(`edit: ${id_scht}`)
+    slidingItem.close()
+    this.navCtrl.navigateForward(`edit_schtm/${id_scht}/${id}`)
+  }
+
+  async ionViewDidEnter() {
+
+    const loading = await this.loadingController.create({
+      message: 'กำลังโหลด',
+      duration: 2000
+    })
+
+    loading.present()
+    let cht_id = this.route.snapshot.paramMap.get('id')
+    this.subchapterService.fecth(cht_id).subscribe((response) => {
+      //this.meta = response['meta']
+     // console.log(this.meta.table)
+      this.subchapterLists = response['data']
+      loading.dismiss()
+    },
+    err => {
+      loading.dismiss()
+      console.log(err.type)
+      this.errToast()
+    })
   }
 
 }
