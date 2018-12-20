@@ -17,6 +17,6 @@ export class SubchapterService {
     this.http.delete('http://10.80.6.160:1045/scht/'+scht_id).subscribe((res: any) => {
     }, error => console.log(error))
   }
-}
 
+  
 }
