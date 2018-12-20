@@ -27,4 +27,8 @@ export class ChoicesService {
     return this.http.post('http://10.80.6.160:1045/cho', JSON.stringify(data), httpOptions)
   }
 
+  get_by_qt_id(qt_id, cho_answer){
+    return this.http.get(`http://10.80.6.160:1045/cho/${qt_id}/${cho_answer}`, httpOptions)
+  }
+
 }

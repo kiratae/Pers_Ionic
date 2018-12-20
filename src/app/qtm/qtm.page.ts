@@ -1,7 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { ItemSliding, NavController, ToastController, LoadingController, AlertController, ModalController } from '@ionic/angular';
 import { QuestionService } from '../services/question.service'
-import { UpdateQtPage } from './update-qt/update-qt.page';
+import { ChoModalPage } from './cho-modal/cho-modal.page';
 
 interface Meta {
   table: string
@@ -95,8 +95,8 @@ export class QTMPage implements OnInit {
           text: 'ยกเลิก',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
+          handler: () => {
+            console.log('Confirm Cancel');
           }
         }, {
           text: 'ตกลง',
@@ -157,8 +157,16 @@ export class QTMPage implements OnInit {
     this.navCtrl.navigateBack('');
   }
 
-  view(id: any) {
-    console.log(`view: ${id}`)
+  async view_cho(id: any, type: any) {
+    console.log(`view_cho: ${id}`)
+    const modal = await this.modalController.create({
+      component: ChoModalPage,
+      componentProps: {
+        'id': id,
+        'type': type
+      }
+    });
+    return await modal.present();
   }
 
   add() {
