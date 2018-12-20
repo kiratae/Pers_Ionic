@@ -23,7 +23,7 @@
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <button class="roundbutton" (click)="add()" color="primary"><ion-icon name="add" mode="ios"></ion-icon></button>
       </ion-fab>
-  <ion-list> 
+  <ion-list mode="ios"> 
 
     <ion-item-sliding #slidingItem  *ngFor="let subjects of subjectsLists; let i = index">
       <ion-item (click)="toChtm(subjects.sub_id, slidingItem)">
