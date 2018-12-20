@@ -13,7 +13,7 @@
   <ion-list mode="ios">
     <ion-item>
       <ion-label position="floating">คำถาม</ion-label>
-      <ion-textarea [(ngModel)]="data.qt_text" #qt_text_input rows="8" type="text" value="{{question.qt_text}}" autofocus="true"></ion-textarea>
+      <ion-textarea [(ngModel)]="data.qt_text" #qt_text_input rows="8" type="text" [value]="question.qt_text" autofocus="true"></ion-textarea>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -43,7 +43,7 @@ const routes: Routes = [
   { 
   path: 'schtm/:id', 
   loadChildren: './schtm/schtm.module#SchtmPageModule' 
-
+  },
   { 
     path: 'insert_lv', 
     loadChildren: './lvm/insert-lv/insert-lv.module#InsertLvPageModule' 
@@ -64,7 +64,16 @@ const routes: Routes = [
     path: 'chtm/:id', 
     loadChildren: './subm/chtm/chtm.module#ChtmPageModule' 
 
+  },
+  {
+    path: 'insert-cho-correct',
+    loadChildren: './qtm/insert-qt/insert-cho-correct/insert-cho-correct.module#InsertChoCorrectPageModule'
+  },
+  {
+    path: 'insert-cho-incorrect',
+    loadChildren: './qtm/insert-qt/insert-cho-incorrect/insert-cho-incorrect.module#InsertChoIncorrectPageModule'
   }
+
 
 
 
