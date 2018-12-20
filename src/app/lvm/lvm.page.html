@@ -1,8 +1,8 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-button (click)="back()">
-        <ion-icon name="arrow-back"></ion-icon>
+        <ion-icon name="arrow-back" mode="ios"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>การจัดการระดับวัดผล</ion-title>
@@ -10,14 +10,42 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
-
-  <ion-searchbar animated showCancelButton cancelButtonText="ยกเลิก"
-    (ionInput)="onInput($value)"
-    (ionCancel)="onCancel($event)"
+  <ion-toolbar color="primary">
+  <ion-searchbar [(ngModel)]="searchTerm" mode="ios" animated showCancelButton cancelButtonText="ยกเลิก"
+    (ionChange)="ionChange()"
+    (ionCancel)="onCancel()"
   ></ion-searchbar>
+  </ion-toolbar>
 
 </ion-header>
 
-<ion-content padding>
+
+
+<ion-content >
+
   
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <button class="roundbutton"  (click)="add()" color="primary"><ion-icon name="add" mode="ios"></ion-icon></button>
+  </ion-fab>
+
+
+
+  <ion-list  *ngFor="let level of levelLists; let i = index">
+
+    <ion-item-sliding #slidingItem>
+      <ion-item>
+        <p>{{level.lv_name_th}} {{level.lv_name_eng}}</p>
+        
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option  color="warning">
+          <ion-icon name="build" class="big-icon"></ion-icon>
+        </ion-item-option>
+        <ion-item-option (click)="delete(i, level.lv_id, slidingItem)" color="danger">
+          <ion-icon name="trash" class="big-icon"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
 </ion-content>

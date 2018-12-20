@@ -1,46 +1,50 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="back()">
-        <ion-icon name="arrow-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-button (click)="back()">
+            <ion-icon name="arrow-back" mode="ios"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     <ion-title>เพิ่มคำถาม</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list mode="ios">
       <ion-list-header>
         Step 2 : เพิ่มข้อมูลคำถาม
       </ion-list-header>
       <ion-item>
         <ion-label>รายวิชา</ion-label>
-        <ion-select value="test" ok-text="ตกลง" cancel-text="ยกเลิก">
-          <ion-select-option value="test">Test</ion-select-option>
+        <ion-select [(ngModel)]="data.sub_id" (ionChange)="fetch_cht()" mode="ios" ok-text="ตกลง" cancel-text="ยกเลิก">
+          <ion-select-option *ngFor="let subject of subjectLists" value="{{subject.sub_id}}">{{subject.sub_code_th}} {{subject.sub_name_th}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>บทเรียน</ion-label>
-        <ion-select value="test" ok-text="ตกลง" cancel-text="ยกเลิก">
-          <ion-select-option value="test">Test</ion-select-option>
+        <ion-select [(ngModel)]="data.cht_id" (ionChange)="fetch_scht()" mode="ios" ok-text="ตกลง" cancel-text="ยกเลิก" disabled="{{isChtDisabled}}">
+          <ion-select-option *ngFor="let chapter of chataptertLists" value="{{chapter.cht_id}}">{{chapter.cht_name}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>บทเรียนย่อย</ion-label>
-        <ion-select value="test" ok-text="ตกลง" cancel-text="ยกเลิก">
-          <ion-select-option value="test">Test</ion-select-option>
+        <ion-select [(ngModel)]="data.scht_id" (ionChange)="fetch_obj()" ok-text="ตกลง" cancel-text="ยกเลิก" disabled="{{isSchtDisabled}}">
+          <ion-select-option *ngFor="let subchapter of subchataptertLists" value="{{subchapter.scht_id}}">{{subchapter.scht_name}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>วัตถุประสงค์</ion-label>
-        <ion-select value="test" ok-text="ตกลง" cancel-text="ยกเลิก">
-          <ion-select-option value="test">Test</ion-select-option>
+        <ion-select [(ngModel)]="data.obj_id" (ionChange)="enabled_qt()" ok-text="ตกลง" cancel-text="ยกเลิก" disabled="{{isObjDisabled}}">
+          <ion-select-option *ngFor="let objective of objectiveLists" value="{{objective.obj_id}}">{{objective.obj_name}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label position="floating">คำถาม</ion-label>
-        <ion-textarea rows="8" type="text"></ion-textarea>
+        <ion-textarea [(ngModel)]="data.qt_text" (ionChange)="enabled_save_btn()" rows="8" type="text" disabled="{{isQtDisabled}}"></ion-textarea>
       </ion-item>
     </ion-list>
 </ion-content>
+
+<ion-footer translucent mode="ios" style="padding: 0 1vw">
+    <ion-button (click)="save()" color="primary" expand="block" size="large" disabled="{{isSaveBtnDisabled}}">บันทึก</ion-button>
+</ion-footer>

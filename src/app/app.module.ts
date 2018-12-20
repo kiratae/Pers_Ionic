@@ -11,7 +11,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { SubjectsService } from './services/subjects.service'
+import { ChapterService } from './services/chapter.service'
 import { QuestionService } from './services/question.service'
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +22,7 @@ import { QuestionService } from './services/question.service'
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule
   ],
@@ -26,6 +30,7 @@ import { QuestionService } from './services/question.service'
     StatusBar,
     SplashScreen,
     SubjectsService,
+    ChapterService,
     QuestionService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

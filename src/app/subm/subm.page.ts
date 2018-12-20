@@ -3,13 +3,13 @@ import { ItemSliding, NavController, ToastController } from '@ionic/angular';
 import { SubjectsService } from '../services/subjects.service'
 
 interface Subjects {
-     sub_id: number
-     sub_code_th: string
-     sub_code_en: string
-     sub_name_th: string
-     sub_name_en: string
-     sub_objective: string
-   }
+  sub_id: number
+  sub_code_th: string
+  sub_code_en: string
+  sub_name_th: string
+  sub_name_en: string
+  sub_objective: string
+}
 
 @Component({
   selector: 'app-subm',
@@ -51,5 +51,9 @@ export class SubmPage implements OnInit {
 
   back(){
     this.navCtrl.navigateBack('');
+  }
+
+  add(){
+    this.navCtrl.navigateForward('insert_subm');
   }
 }
