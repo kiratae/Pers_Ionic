@@ -1,6 +1,8 @@
 {
   "name": "Pers_Ionic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "pro_id": "094cbef4",
   "id": "094cbef4"
