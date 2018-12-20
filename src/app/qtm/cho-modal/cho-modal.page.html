@@ -16,8 +16,8 @@
   <ion-item *ngFor="let row_cho of arr_cho; let i = index">
     <ion-label text-wrap>
       {{row_cho.cho_text}}
-      <p><small>ค่า P : {{row_cho.chi_P}}</small></p>
-      <p><small>ค่า r : {{row_cho.chi_r}}</small></p>
+      <p><small>ค่า P : {{row_cho.cho_P==null?'-':row_cho.cho_P}}</small></p>
+      <p><small>ค่า r : {{row_cho.cho_r==null?'-':row_cho.cho_r}}</small></p>
     </ion-label>
   </ion-item>
 
