@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren: './qtm/insert-qt/insert-qt.module#InsertQTPageModule'
   },
   {
-    path: 'insert_qt_cho_1',
+    path: 'insert_qt_cho/:id',
     loadChildren: './qtm/insert-qt/insert-qt-cho-1.module#InsertQTCho1PageModule'
   },
   { 
@@ -97,7 +97,12 @@ const routes: Routes = [
   { 
     path: 'edit_schtm', 
     loadChildren: './subm/chtm/schtm/edit-schtm/edit-schtm.module#EditSchtmPageModule' 
+  },
+  { 
+    path: 'edit_subm', 
+    loadChildren: './subm/edit-subm/edit-subm.module#EditSubmPageModule' 
   }
+
 
 
 

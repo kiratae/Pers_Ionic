@@ -18,11 +18,11 @@ export class InsertQTPage implements OnInit {
   }
 
   choicesType(){
-    this.navCtrl.navigateForward('insert_qt_cho_1')
+    this.navCtrl.navigateForward('insert_qt_cho/1')
   }
 
   freeTextType(){
-    this.navCtrl.navigateForward('insert_qt_cho_1')
+    this.navCtrl.navigateForward('insert_qt_cho/0')
   }
 
 }
