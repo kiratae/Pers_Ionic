@@ -35,7 +35,7 @@ const routes: Routes = [
     path: 'lvm', 
     loadChildren: './lvm/lvm.module#LvmPageModule' 
   },
-<<<<<<< HEAD
+
   { path: 'chtm', 
   loadChildren: './chtm/chtm.module#ChtmPageModule' 
   },
@@ -43,7 +43,7 @@ const routes: Routes = [
   { 
   path: 'schtm/:id', 
   loadChildren: './schtm/schtm.module#SchtmPageModule' 
-=======
+
   { 
     path: 'insert_lv', 
     loadChildren: './lvm/insert-lv/insert-lv.module#InsertLvPageModule' 
@@ -63,7 +63,7 @@ const routes: Routes = [
   { 
     path: 'chtm/:id', 
     loadChildren: './subm/chtm/chtm.module#ChtmPageModule' 
->>>>>>> 16c34c16b5eaa82007f507f2565e0ecb37a1f6ca
+
   }
 
 
