@@ -26,7 +26,7 @@ export class ChtmPage implements OnInit {
     private toastCtrl: ToastController
   ) { }
 
-  //ngOnInit() {
+  ngOnInit() {
     //this.chapterService.fecth(this.cht_sub_id).subscribe((response) => {
       //  this.meta = response['meta']
       //  console.log(this.meta.table)
@@ -36,7 +36,7 @@ export class ChtmPage implements OnInit {
         //  console.log(err.type)
         //  this.errToast()
       //})
-  //}
+  }
 
   //async errToast() {
     //const toast = await this.toastCtrl.create({
