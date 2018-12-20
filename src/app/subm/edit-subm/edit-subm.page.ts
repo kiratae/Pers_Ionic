@@ -82,9 +82,9 @@ export class EditSubmPage implements OnInit {
 
       this.SubjectsService.update(this.subject.sub_id, sub_code_th, sub_code_en, sub_name_th, sub_name_en, sub_objective,this.subject.sub_status).subscribe((res: any) => {
         console.log(res)
+        this.navCtrl.navigateBack('/subm');
       }, error => console.log(error))
       
-      this.navCtrl.navigateBack('subm');
     }else{
       this.errToast()
     }
@@ -92,6 +92,6 @@ export class EditSubmPage implements OnInit {
   }
 
   back(){
-    this.navCtrl.navigateBack('subm');
+    this.navCtrl.navigateBack('/subm');
   }
 }
