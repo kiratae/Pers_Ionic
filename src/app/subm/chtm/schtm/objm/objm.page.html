@@ -36,7 +36,7 @@
                 <ion-item-option  color="warning">
                   <ion-icon name="build" class="big-icon"></ion-icon>
                 </ion-item-option>
-                <ion-item-option  color="danger">
+                <ion-item-option  color="danger" (click)="delete(i, objective.obj_id, slidingItem)">
                   <ion-icon name="trash" class="big-icon"></ion-icon>
                 </ion-item-option>
               </ion-item-options>

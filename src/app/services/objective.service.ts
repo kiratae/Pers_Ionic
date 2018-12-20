@@ -11,5 +11,9 @@ export class ObjectiveService {
   fecth(scht_id){
     return this.http.get('http://10.80.6.160:1045/obj/'+scht_id)
   }
-
+  delete(scht_id) {
+    console.log('Deleting : scht_id = '+scht_id)
+    this.http.delete('http://10.80.6.160:1045/scht/'+scht_id).subscribe((res: any) => {
+    }, error => console.log(error))
+  }
 }
