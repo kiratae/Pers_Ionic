@@ -35,22 +35,28 @@ export class EditSubmPage implements OnInit {
     public loadingController: LoadingController
     ) { this.subject = { 'sub_id':0,'sub_code_th':'','sub_code_en':'','sub_name_th':'','sub_name_en':'','sub_objective':'','sub_status':1 } }
 
-    async   ionViewDidEnter(){
+    async ionViewDidEnter(){
       let sub_id = this.route.snapshot.paramMap.get('id')
       console.log(sub_id)
 
-      
+      const loading = await this.loadingController.create({
+        message: 'กำลังโหลด',
+        duration: 2000,
+        mode: 'ios'
+      })
 
-
+      loading.present()
       
       this.SubjectsService.get_by_key(sub_id).subscribe((response) => {
         //this.meta = response['meta']
         //console.log(this.meta.table)
         this.subject = response['data'][0]
         //console.log(this.subject)
-        this.myInput.setFocus()
+        // this.myInput.setFocus()
+        loading.dismiss()
       },
       err => {
+        loading.dismiss()
         console.log(err.type)
         this.errToast()
       })

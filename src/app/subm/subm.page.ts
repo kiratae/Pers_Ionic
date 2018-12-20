@@ -30,15 +30,25 @@ export class SubmPage implements OnInit {
     public modalController: ModalController
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    const loading = await this.loadingController.create({
+      message: 'กำลังโหลด',
+      duration: 2000
+    })
+
+    loading.present()
+
     this.subjectsService.get_all().subscribe((response) => {
     //  this.meta = response['meta']
     //  console.log(this.meta.table)
       this.subjectsLists = response['data']
+      loading.dismiss()
     },
     err => {
-        console.log(err.type)
-        this.errToast()
+      loading.dismiss()
+      console.log(err.type)
+      this.errToast()
     })
   }
 
@@ -53,14 +63,25 @@ export class SubmPage implements OnInit {
     toast.present();
   }
 
-  doRefresh() {
+  doRefresh(event) {
     console.log('Begin async question');
 
     this.subjectsService.get_all().subscribe((response) => {
       //this.meta = response['meta']
       //console.log(this.meta.table)
       this.subjectsLists = response['data']
+      event.target.complete()
+    },
+    err => {
+        console.log(err.type)
+        this.errToast()
+        event.target.complete()
     })
+
+    setTimeout(() => {
+      console.log('Async question error time out')
+      event.target.complete()
+    }, 5000)
 
   }
 
@@ -106,18 +127,29 @@ export class SubmPage implements OnInit {
 
   edit(id: any, slidingItem: ItemSliding) {
     console.log(`edit: ${id}`)
+    slidingItem.close()
     this.navCtrl.navigateForward(`edit_subm/${id}`)
   }
 
-  ionViewDidEnter() {
+  async ionViewDidEnter() {
+
+    const loading = await this.loadingController.create({
+      message: 'กำลังโหลด',
+      duration: 2000
+    })
+
+    loading.present()
+
     this.subjectsService.get_all().subscribe((response) => {
       //this.meta = response['meta']
      // console.log(this.meta.table)
       this.subjectsLists = response['data']
+      loading.dismiss()
     },
     err => {
-        console.log(err.type)
-        this.errToast()
+      loading.dismiss()
+      console.log(err.type)
+      this.errToast()
     })
   }
 
