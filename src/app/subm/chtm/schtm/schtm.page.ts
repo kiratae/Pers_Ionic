@@ -27,7 +27,7 @@ export class SchtmPage implements OnInit {
     private alertController: AlertController
   ) { }
   ngOnInit() {
-    this.subchapterService.fecth(cht_id).subscribe((response) => {
+   /* this.subchapterService.fecth(cht_id).subscribe((response) => {
       //  this.meta = response['meta']
       //  console.log(this.meta.table)
         this.subchapterLists = response['data']
@@ -36,6 +36,7 @@ export class SchtmPage implements OnInit {
           console.log(err.type)
           this.errToast()
       })
+    */
   }
 
   async errToast() {
