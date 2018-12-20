@@ -88,7 +88,7 @@ const routes: Routes = [
   },
   {
     path: 'edit_objm', 
-    loadChildren: './subm/chtm/schtm/edit-objm/edit-objm.module#EditObjmPageModule' 
+    loadChildren: './subm/chtm/schtm/objm/edit-objm/edit-objm.module#EditObjmPageModule' 
   },
   { 
     path: 'edit_chtm', 
