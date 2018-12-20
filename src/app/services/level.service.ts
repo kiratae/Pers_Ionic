@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 interface Level {
+  lv_id: number
   lv_name_th: string
   lv_name_eng: string
   lv_status: number
@@ -38,10 +39,13 @@ export class LevelService {
     this.http.delete('http://10.80.6.160:1045/lvl/'+lv_id).subscribe((res: any) => {
     }, error => console.log(error))
   }
-  update(qt_id, qt_text, qt_status, qt_type) {
+  update(lv_id, lv_name_th, lv_name_eng , lv_status) {
 
-    let data = { 'qt_id':qt_id,'qt_text':qt_text, 'qt_status':qt_status, 'qt_type':qt_type }
+    let data = { 'lv_id':lv_id,'lv_name_th':lv_name_th, 'lv_name_eng':lv_name_eng  , 'lv_status': lv_status}
     console.log(data)
-    this.http.put('http://10.80.6.160:1045/que', JSON.stringify(data), httpOptions).subscribe()
+    return this.http.put('http://10.80.6.160:1045/lvl', JSON.stringify(data), httpOptions)
+  }
+  get_by_key(lv_id) {
+    return this.http.get('http://10.80.6.160:1045/lvl/'+lv_id)
   }
 }

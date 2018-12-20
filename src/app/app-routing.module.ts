@@ -53,7 +53,7 @@ const routes: Routes = [
     loadChildren: './qtm/update-qt/update-qt.module#UpdateQtPageModule'
   },
   {
-    path: 'edit_lv', 
+    path: 'edit_lv/:id', 
     loadChildren: './lvm/edit-lv/edit-lv.module#EditLvPageModule' 
   },
   { 
@@ -88,7 +88,7 @@ const routes: Routes = [
   },
   {
     path: 'edit_objm', 
-    loadChildren: './subm/chtm/schtm/edit-objm/edit-objm.module#EditObjmPageModule' 
+    loadChildren: './subm/chtm/schtm/objm/edit-objm/edit-objm.module#EditObjmPageModule' 
   },
   { 
     path: 'edit_chtm', 
