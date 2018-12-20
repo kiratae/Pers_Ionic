@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController, BackButton } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-lv',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditLvPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private navCtrl: NavController,
+    private route: ActivatedRoute
+    ) { }
 
+
+    ionViewDidEnter(){
+      let lv_id = this.route.snapshot.paramMap.get('id')
+      console.log(lv_id)
+    }
   ngOnInit() {
   }
-
+  
+  back(){
+    this.navCtrl.navigateBack('lvm');
+  }
 }

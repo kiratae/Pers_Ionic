@@ -38,8 +38,8 @@
         
       </ion-item>
       <ion-item-options side="end">
-        <ion-item-option  color="warning">
-          <ion-icon name="build" class="big-icon"></ion-icon>
+        <ion-item-option (click)="edit(level.lv_id, slidingItem)"  color="warning">
+          <ion-icon  name="build" class="big-icon"></ion-icon>
         </ion-item-option>
         <ion-item-option (click)="delete(i, level.lv_id, slidingItem)" color="danger">
           <ion-icon name="trash" class="big-icon"></ion-icon>
