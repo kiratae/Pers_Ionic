@@ -5,7 +5,7 @@
         <ion-icon name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>การจัดการบทเรียนเรียน</ion-title>
+    <ion-title>การจัดการบทเรียน</ion-title>
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -31,8 +31,8 @@
           
         </ion-item>
         <ion-item-options side="end">
-            <ion-item-option  color="warning">
-                <ion-icon name="create" class="big-icon" mode="md" (click)="edit(subjects.sub_id, slidingItem)"></ion-icon>
+            <ion-item-option  color="warning" (click)="edit(chapter.cht_sub_id,chapter.cht_id,slidingItem)">
+                <ion-icon name="create" class="big-icon" mode="md" ></ion-icon>
               </ion-item-option>
               <ion-item-option  color="danger" (click)="delete(i, chapter.cht_id, slidingItem)">
                 <ion-icon name="trash" class="big-icon" ></ion-icon>

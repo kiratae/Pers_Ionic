@@ -39,4 +39,21 @@ export class ChapterService {
     this.http.delete('http://10.80.6.160:1045/cht/'+cht_id).subscribe((res: any) => {
     }, error => console.log(error))
   }
+
+  update(cht_id,cht_sequence, cht_code, cht_name, cht_status, cht_sub_id) {
+
+    let data = { 'cht_id':cht_id,'cht_sequence':cht_sequence, 'cht_code':cht_code, 'cht_name':cht_name, 'cht_status':cht_status, 'cht_sub_id':cht_sub_id}
+    console.log(data)
+    return this.http.put('http://10.80.6.160:1045/cht', JSON.stringify(data), httpOptions)
+  }
+
+  get_by_key(cht_id) {
+    console.log('Deleting : cht_id = '+cht_id)
+    return this.http.get('http://10.80.6.160:1045/cht/'+cht_id)
+  }
+
+  get_by_edit(sub_id,cht_id) {
+    console.log('Deleting : cht_id = '+cht_id)
+    return this.http.get('http://10.80.6.160:1045/cht/'+sub_id+'/'+cht_id)
+  }
 }

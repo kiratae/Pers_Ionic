@@ -71,10 +71,10 @@ const routes: Routes = [
   },
 
   { 
-  path: 'schtm_insert', 
+  path: 'schtm_insert/:id', 
   loadChildren: './subm/chtm/schtm/schtm-insert/schtm-insert.module#SchtmInsertPageModule' 
   },
-  { path: 'insert_chtm', 
+  { path: 'insert_chtm/:id', 
   loadChildren: './subm/chtm/insert-chtm/insert-chtm.module#InsertChtmPageModule' 
   },
 
@@ -83,19 +83,19 @@ const routes: Routes = [
     loadChildren: './subm/chtm/schtm/objm/objm.module#ObjmPageModule' 
   },
   { 
-    path: 'insert_obj', 
+    path: 'insert_obj/:id', 
     loadChildren: './subm/chtm/schtm/objm/insert-obj/insert-obj.module#InsertObjPageModule' 
   },
   {
-    path: 'edit_objm', 
+    path: 'edit_objm/:id', 
     loadChildren: './subm/chtm/schtm/objm/edit-objm/edit-objm.module#EditObjmPageModule' 
   },
   { 
-    path: 'edit_chtm', 
+    path: 'edit_chtm/:id/:id_cht', 
     loadChildren: './subm/chtm/edit-chtm/edit-chtm.module#EditChtmPageModule' 
   },
   { 
-    path: 'edit_schtm', 
+    path: 'edit_schtm/:id', 
     loadChildren: './subm/chtm/schtm/edit-schtm/edit-schtm.module#EditSchtmPageModule' 
   },
   { 

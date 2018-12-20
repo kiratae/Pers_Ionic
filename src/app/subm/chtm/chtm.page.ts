@@ -43,6 +43,7 @@ export class ChtmPage implements OnInit {
 
 
   ngOnInit() {
+    let cht_id = this.route.snapshot.paramMap.get('id_cht')
     let sub_id = this.route.snapshot.paramMap.get('id')
     console.log(sub_id)
     this.chapterService.fecth(sub_id).subscribe((response) => {
@@ -106,4 +107,31 @@ export class ChtmPage implements OnInit {
     await alert.present();
   }
   
+  edit(id_cht: any,id: any, slidingItem: ItemSliding) {
+    console.log(`edit: ${id}`)
+    slidingItem.close()
+    this.navCtrl.navigateForward(`edit_chtm/${id_cht}/${id}`)
+  }
+
+  async ionViewDidEnter() {
+
+    const loading = await this.loadingController.create({
+      message: 'กำลังโหลด',
+      duration: 2000
+    })
+
+    loading.present()
+    let sub_id = this.route.snapshot.paramMap.get('id')
+    this.chapterService.fecth(sub_id).subscribe((response) => {
+      //this.meta = response['meta']
+     // console.log(this.meta.table)
+      this.chapterLists = response['data']
+      loading.dismiss()
+    },
+    err => {
+      loading.dismiss()
+      console.log(err.type)
+      this.errToast()
+    })
+  }
 }
