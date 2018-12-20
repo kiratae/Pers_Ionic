@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemSliding, NavController, ToastController, LoadingController, AlertController } from '@ionic/angular';
-import { subchapterService } from '../services/subchapter.service'
+// import { subchapterService } from '../services/subchapter.service'
 
 interface Subjects {
   scht_id: number
@@ -17,7 +17,7 @@ interface Subjects {
 })
 export class SchtmPage implements OnInit {
 
-  private subchapterLists: subchapter[];
+ //  private subchapterLists: subchapter[];
 
   constructor(
     private navCtrl: NavController,
