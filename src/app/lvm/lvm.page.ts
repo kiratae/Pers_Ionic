@@ -86,6 +86,10 @@ export class LvmPage implements OnInit {
   add() {
     this.navCtrl.navigateForward('insert_lv')
   }
+  edit(id: any, slidingItem: ItemSliding) {
+    console.log(`edit: ${id}`)
+    this.navCtrl.navigateForward(`edit_lv/${id}`)
+  }
   delete(index:any, id: any, slidingItem: ItemSliding) {
     console.log(`delete: ${id}`)
     this.levelService.delete(id)

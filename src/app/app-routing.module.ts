@@ -37,8 +37,9 @@ const routes: Routes = [
   },
   { 
   path: 'schtm/:id', 
-  loadChildren: './schtm/schtm.module#SchtmPageModule' 
+  loadChildren: './subm/chtm/schtm/schtm.module#SchtmPageModule' 
   },
+  
   { 
     path: 'insert_lv', 
     loadChildren: './lvm/insert-lv/insert-lv.module#InsertLvPageModule' 
@@ -52,7 +53,7 @@ const routes: Routes = [
     loadChildren: './qtm/update-qt/update-qt.module#UpdateQtPageModule'
   },
   {
-    path: 'edit_lv', 
+    path: 'edit_lv/:id', 
     loadChildren: './lvm/edit-lv/edit-lv.module#EditLvPageModule' 
   },
   { 
@@ -67,7 +68,39 @@ const routes: Routes = [
   {
     path: 'insert-cho-incorrect',
     loadChildren: './qtm/insert-qt/insert-cho-incorrect/insert-cho-incorrect.module#InsertChoIncorrectPageModule'
+  },
+
+  { 
+  path: 'schtm_insert', 
+  loadChildren: './subm/chtm/schtm/schtm-insert/schtm-insert.module#SchtmInsertPageModule' 
+  },
+  { path: 'insert_chtm', 
+  loadChildren: './subm/chtm/insert-chtm/insert-chtm.module#InsertChtmPageModule' 
+  },
+
+  { 
+    path: 'objm/:id', 
+    loadChildren: './subm/chtm/schtm/objm/objm.module#ObjmPageModule' 
+  },
+  { 
+    path: 'insert_obj', 
+    loadChildren: './subm/chtm/schtm/objm/insert-obj/insert-obj.module#InsertObjPageModule' 
+  },
+  {
+    path: 'edit_objm', 
+    loadChildren: './subm/chtm/schtm/objm/edit-objm/edit-objm.module#EditObjmPageModule' 
+  },
+  { 
+    path: 'edit_chtm', 
+    loadChildren: './subm/chtm/edit-chtm/edit-chtm.module#EditChtmPageModule' 
+  },
+  { 
+    path: 'edit_schtm', 
+    loadChildren: './subm/chtm/schtm/edit-schtm/edit-schtm.module#EditSchtmPageModule' 
   }
+
+
+
 
 
 
