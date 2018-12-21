@@ -28,6 +28,7 @@ export class SchtmPage implements OnInit {
    private subchapterLists: subchapter[];
    private subchapter:subchapter;
    private meta: Meta;
+   private sub_id
 
   constructor(
     private navCtrl: NavController,
@@ -41,9 +42,10 @@ export class SchtmPage implements OnInit {
 
   ngOnInit() {
     let scht_id = this.route.snapshot.paramMap.get('id_scht')
-    let sub_id = this.route.snapshot.paramMap.get('id')
-    console.log(sub_id)
-    this.subchapterService.fecth(sub_id).subscribe((response) => {
+    //this.scht_cht_id = this.route.snapshot.paramMap.get('scht_cht_id')
+    this.sub_id = this.route.snapshot.paramMap.get('id_cht')
+    console.log(this.sub_id)
+    this.subchapterService.fecth(this.sub_id).subscribe((response) => {
         this.meta = response['meta']
         console.log(response['data'])
         this.subchapterLists = response['data']
@@ -66,7 +68,7 @@ export class SchtmPage implements OnInit {
   }
 
   back(){
-    this.navCtrl.navigateBack('chtm/:id');
+    this.navCtrl.navigateBack('chtm/'+ this.sub_id);
   }
 
   delete(index:any, id: any, slidingItem: ItemSliding) {

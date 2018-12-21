@@ -26,7 +26,7 @@
   <ion-list  *ngFor="let chapter of chapterLists; let i = index">
 
       <ion-item-sliding #slidingItem>
-        <ion-item  (click)="toSchtm(chapter.cht_id,chapter.scht_cht_id, slidingItem)">
+        <ion-item  (click)="toSchtm(chapter.cht_id,chapter.cht_sub_id, slidingItem)">
          {{chapter.cht_name}}
           
         </ion-item>

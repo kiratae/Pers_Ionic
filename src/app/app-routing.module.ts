@@ -36,7 +36,7 @@ const routes: Routes = [
     loadChildren: './lvm/lvm.module#LvmPageModule' 
   },
   { 
-  path: 'schtm/:id', 
+  path: 'schtm/:id/:id_cht', 
   loadChildren: './subm/chtm/schtm/schtm.module#SchtmPageModule' 
   },
   
