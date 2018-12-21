@@ -28,7 +28,7 @@
     <ion-list  *ngFor="let subchapter of subchapterLists; let i = index">
 
         <ion-item-sliding #slidingItem>
-          <ion-item >
+          <ion-item (click)="toSchtm(subchapter.scht_id, slidingItem)">
             {{subchapter.scht_name}}
             
           </ion-item>

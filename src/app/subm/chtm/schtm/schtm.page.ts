@@ -29,6 +29,7 @@ export class SchtmPage implements OnInit {
    private subchapter:subchapter;
    private meta: Meta;
    private sub_id
+   private scht_id
 
   constructor(
     private navCtrl: NavController,
@@ -41,9 +42,10 @@ export class SchtmPage implements OnInit {
   ) {this.subchapter = { 'scht_id':0,'scht_cht_id':0,'scht_sequence':'','scht_name':'','scht_status':0}}
 
   ngOnInit() {
-    let scht_id = this.route.snapshot.paramMap.get('id_scht')
+    this.scht_id = this.route.snapshot.paramMap.get('id')
+    console.log(this.scht_id)
     //this.scht_cht_id = this.route.snapshot.paramMap.get('scht_cht_id')
-    this.sub_id = this.route.snapshot.paramMap.get('id_cht')
+    this.sub_id = this.route.snapshot.paramMap.get('id_sub')
     console.log(this.sub_id)
     this.subchapterService.fecth(this.sub_id).subscribe((response) => {
         this.meta = response['meta']
@@ -103,7 +105,7 @@ export class SchtmPage implements OnInit {
   }
 
   add(){
-    this.navCtrl.navigateForward('schtm_insert');
+    this.navCtrl.navigateForward('schtm_insert/'+this.scht_id);
   }
 
   edit(id_scht: any,id: any, slidingItem: ItemSliding) {
@@ -133,6 +135,13 @@ export class SchtmPage implements OnInit {
       console.log(err.type)
       this.errToast()
     })
+  }
+
+  toSchtm(id: any, slidingItem: ItemSliding){
+    this.navCtrl.navigateForward('objm/'+id+'/'+this.scht_id+'/'+this.sub_id)
+    console.log(id)
+    console.log(this.scht_id)
+    console.log(this.sub_id)
   }
 
 }

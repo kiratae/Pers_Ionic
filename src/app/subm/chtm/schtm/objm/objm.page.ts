@@ -28,6 +28,8 @@ export class ObjmPage implements OnInit {
   private objectiveLists: Objective[];
   private objective: Objective;
   private meta: Meta;
+  private cht_id;
+  private sub_id;
 
   constructor(
     private navCtrl: NavController,
@@ -40,6 +42,8 @@ export class ObjmPage implements OnInit {
 
   ngOnInit() {
     let obj_scht_id = this.route.snapshot.paramMap.get('id')
+    this.cht_id = this.route.snapshot.paramMap.get('id_cht')
+    this.sub_id = this.route.snapshot.paramMap.get('id_sub')
     console.log(obj_scht_id)
     this.objectiveService.fecth(obj_scht_id).subscribe((response) => {
         this.meta = response['meta']
@@ -64,7 +68,7 @@ export class ObjmPage implements OnInit {
   }
 
   back(){
-    this.navCtrl.navigateBack('schtm/:id');
+    this.navCtrl.navigateBack('schtm/'+this.cht_id+'/'+this.sub_id);
   }
 
   add(){

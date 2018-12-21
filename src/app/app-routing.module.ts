@@ -36,7 +36,7 @@ const routes: Routes = [
     loadChildren: './lvm/lvm.module#LvmPageModule' 
   },
   { 
-  path: 'schtm/:id/:id_cht', 
+  path: 'schtm/:id/:id_sub', 
   loadChildren: './subm/chtm/schtm/schtm.module#SchtmPageModule' 
   },
   
@@ -79,7 +79,7 @@ const routes: Routes = [
   },
 
   { 
-    path: 'objm/:id', 
+    path: 'objm/:id/:id_cht/:id_sub', 
     loadChildren: './subm/chtm/schtm/objm/objm.module#ObjmPageModule' 
   },
   { 
