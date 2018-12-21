@@ -32,7 +32,7 @@
               {{objective.obj_name}}
             </ion-item>
             <ion-item-options side="end">
-                <ion-item-option  color="warning">
+                <ion-item-option  color="warning" (click)="edit(objective.obj_id, slidingItem)">
                   <ion-icon name="create" mode="md" class="big-icon"></ion-icon>
                 </ion-item-option>
                 <ion-item-option  color="danger" (click)="delete(i, objective.obj_id, slidingItem)">

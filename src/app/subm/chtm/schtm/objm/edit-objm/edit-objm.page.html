@@ -8,19 +8,19 @@
      <ion-title>แก้ไขวัตถุประสงค์</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
     <ion-item>
       <ion-label position="floating">ชื่อวัตถุประสงค์</ion-label>
       <ion-input [(ngModel)]="data.obj_name"  name="obj_name" [value]="objective.obj_name"></ion-input>
     </ion-item>
-    <!-- dropdown lv
     <ion-item>
-      <ion-label>รายวิชา</ion-label>
-      <ion-select [(ngModel)]="data.lv_id" (ionChange)="fetch_cht()" mode="ios" ok-text="ตกลง" cancel-text="ยกเลิก">
-        <ion-select-option *ngFor="let level of levelLists" value="{{objective.obj_lv_id}}">{{subject.sub_code_th}} {{subject.sub_name_th}}</ion-select-option>
+      <ion-label>ระดับวัดผล</ion-label>
+      <ion-select [(ngModel)]="data.obj_lv_id" mode="ios" ok-text="ตกลง" cancel-text="ยกเลิก">
+        <ion-select-option *ngFor="let level of arr_level" [value]="level.lv_id" selected="level.lv_id == objective.obj_lv_id">{{level.lv_name_th}} ({{level.lv_name_eng}})</ion-select-option>
       </ion-select>
     </ion-item>
-</ion-content>-->
+</ion-content>
 
 <ion-footer translucent mode="ios" style="padding: 0 1vw">
     <ion-button color="primary" expand="block" size="large" (click)="save()">บันทึก</ion-button>

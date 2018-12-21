@@ -19,8 +19,6 @@ export class InsertLvPage implements OnInit {
   ngOnInit() {
     
   }
-
-
   
   back(){
     this.navCtrl.navigateBack('lvm');

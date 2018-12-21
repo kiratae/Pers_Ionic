@@ -83,11 +83,11 @@ const routes: Routes = [
     loadChildren: './subm/chtm/schtm/objm/objm.module#ObjmPageModule' 
   },
   { 
-    path: 'insert_obj/:id', 
+    path: 'insert_obj/:id_scht/:id_cht/:id_sub', 
     loadChildren: './subm/chtm/schtm/objm/insert-obj/insert-obj.module#InsertObjPageModule' 
   },
   {
-    path: 'edit_objm/:id/:id_cht/:id_sub', 
+    path: 'edit_objm/:id/:id_scht/:id_cht/:id_sub', 
     loadChildren: './subm/chtm/schtm/objm/edit-objm/edit-objm.module#EditObjmPageModule' 
   },
   { 

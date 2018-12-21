@@ -28,6 +28,7 @@ export class ObjmPage implements OnInit {
   private objectiveLists: Objective[];
   private objective: Objective;
   private meta: Meta;
+  private scht_id;
   private cht_id;
   private sub_id;
 
@@ -41,11 +42,27 @@ export class ObjmPage implements OnInit {
   ) { this.objective = { 'obj_id':0,'obj_name':'','obj_status':0,'obj_scht_id':0,'obj_lv_id':0}}
 
   ngOnInit() {
-    let obj_scht_id = this.route.snapshot.paramMap.get('id')
+    this.scht_id = this.route.snapshot.paramMap.get('id')
     this.cht_id = this.route.snapshot.paramMap.get('id_cht')
     this.sub_id = this.route.snapshot.paramMap.get('id_sub')
-    console.log(obj_scht_id)
-    this.objectiveService.fecth(obj_scht_id).subscribe((response) => {
+    console.log(this.scht_id)
+    this.objectiveService.fecth(this.scht_id).subscribe((response) => {
+        this.meta = response['meta']
+        console.log(response['data'])
+        this.objectiveLists = response['data']
+      },
+    err => {
+          console.log(err.type)
+          this.errToast()
+      })
+  }
+
+  ionViewDidEnter() {
+    this.scht_id = this.route.snapshot.paramMap.get('id')
+    this.cht_id = this.route.snapshot.paramMap.get('id_cht')
+    this.sub_id = this.route.snapshot.paramMap.get('id_sub')
+    console.log(this.scht_id)
+    this.objectiveService.fecth(this.scht_id).subscribe((response) => {
         this.meta = response['meta']
         console.log(response['data'])
         this.objectiveLists = response['data']
@@ -72,7 +89,13 @@ export class ObjmPage implements OnInit {
   }
 
   add(){
-    this.navCtrl.navigateForward('insert_obj');
+    this.navCtrl.navigateForward(`insert_obj/${this.scht_id}/${this.cht_id}/${this.sub_id}`);
+  }
+
+  edit(id: any, slidingItem: ItemSliding) {
+    console.log(`edit: ${id}`)
+    slidingItem.close()
+    this.navCtrl.navigateForward(`edit_objm/${id}/${this.scht_id}/${this.cht_id}/${this.sub_id}`)
   }
 
   delete(index:any, id: any, slidingItem: ItemSliding) {
@@ -80,6 +103,7 @@ export class ObjmPage implements OnInit {
     slidingItem.close();
     this.deleteConfirm(index, id)
   }
+
   async deleteConfirm(index, id) {
     const alert = await this.alertController.create({
       header: 'ยืนยันการลบข้อมูล',

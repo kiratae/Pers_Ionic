@@ -30,6 +30,12 @@ export class ObjectiveService {
     this.http.delete('http://10.80.6.160:1045/obj/'+obj_id).subscribe((res: any) => {
     }, error => console.log(error))
   }
+  insert(obj_name, obj_status, obj_scht_id, obj_lv_id) {
+
+    let data = { 'obj_name':obj_name, 'obj_status':obj_status, 'obj_scht_id':obj_scht_id, 'obj_lv_id':obj_lv_id }
+    console.log(data)
+    return this.http.post('http://10.80.6.160:1045/obj', JSON.stringify(data), httpOptions)
+  }
   //mean
   update(obj_id, obj_name, obj_status, obj_scht_id, obj_lv_id) {
 
@@ -43,8 +49,8 @@ export class ObjectiveService {
     return this.http.get('http://10.80.6.160:1045/obj/'+obj_id)
   }
 
-  get_by_edit(obj_id, scht_id, cht_id) {
-    console.log('Deleting : obj_id = '+obj_id)
-    return this.http.get('http://10.80.6.160:1045/obj/'+obj_id+'/'+scht_id+'/'+cht_id)
+  get_by_edit(obj_id) {
+    console.log('get_by_edit : obj_id = '+obj_id)
+    return this.http.get('http://10.80.6.160:1045/obj_by_key/'+obj_id)
   }
 }
