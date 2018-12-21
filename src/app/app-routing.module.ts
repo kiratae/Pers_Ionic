@@ -87,7 +87,7 @@ const routes: Routes = [
     loadChildren: './subm/chtm/schtm/objm/insert-obj/insert-obj.module#InsertObjPageModule' 
   },
   {
-    path: 'edit_objm/:id/:id_obj', 
+    path: 'edit_objm/:id/:id_cht/:id_sub', 
     loadChildren: './subm/chtm/schtm/objm/edit-objm/edit-objm.module#EditObjmPageModule' 
   },
   { 
@@ -106,7 +106,6 @@ const routes: Routes = [
     path: 'choModal',
     loadChildren: './qtm/cho-modal/cho-modal.module#ChoModalPageModule'
   }
-
 
 
 
