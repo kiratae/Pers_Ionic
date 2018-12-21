@@ -84,7 +84,7 @@ export class EditSchtmPage implements OnInit {
 
       this.SubchapterService.update(this.subchapter.scht_id, this.subchapter.scht_sequence, scht_name, this.subchapter.scht_status, this.subchapter.scht_cht_id).subscribe((res: any) => {
         console.log(res)
-        this.navCtrl.navigateBack('/schtm/'+this.subchapter.scht_cht_id);
+        this.navCtrl.navigateBack('/schtm/' + this.subchapter.scht_cht_id + '/' + this.subchapter.scht_id);
       }, error => console.log(error))
       
     }else{
@@ -92,7 +92,7 @@ export class EditSchtmPage implements OnInit {
     }
   }
 
-  back(){
-    this.navCtrl.navigateBack('/schtm/'+this.cht_id);
+  back(cht_id,scht_id){
+    this.navCtrl.navigateBack('/schtm/' + this.cht_id + '/' + this.scht_id);
   }
 }
