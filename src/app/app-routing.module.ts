@@ -71,7 +71,7 @@ const routes: Routes = [
   },
 
   { 
-  path: 'schtm_insert/:id', 
+  path: 'schtm_insert/:id/:sub_id', 
   loadChildren: './subm/chtm/schtm/schtm-insert/schtm-insert.module#SchtmInsertPageModule' 
   },
   { path: 'insert_chtm/:id', 
