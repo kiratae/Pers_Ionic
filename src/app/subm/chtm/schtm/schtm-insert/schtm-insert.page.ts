@@ -54,8 +54,8 @@ export class SchtmInsertPage implements OnInit {
   save(){
     let scht_name = this.data['scht_name']
     console.log(scht_name);
-    this.subchapterService.insert(this.subchapter.scht_cht_id, 1, this.subchapter.scht_name, this.subchapter.scht_status).subscribe((res: any) => {
-      this.navCtrl.navigateBack(`objm/${this.scht_id}/${this.sub_id}`);
+    this.subchapterService.insert(this.scht_id, 1, scht_name,1).subscribe((res: any) => {
+      this.navCtrl.navigateBack(`schtm/${this.scht_id}/${this.sub_id}`);
     })
   }
 

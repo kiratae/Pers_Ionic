@@ -29,7 +29,7 @@ export class SubchapterService {
   insert(scht_cht_id, scht_sequence, scht_name, scht_status) {
     console.log(scht_name)
     let data = { 'scht_cht_id':scht_cht_id, 'scht_sequence':scht_sequence, 'scht_name':scht_name, 'scht_status':scht_status}
-    return this.http.post('http://10.80.6.160:1045/cht', JSON.stringify(data), httpOptions)
+    return this.http.post('http://10.80.6.160:1045/scht', JSON.stringify(data), httpOptions)
   }
 
   delete(scht_id) {
