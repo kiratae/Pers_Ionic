@@ -22,8 +22,9 @@ export class EditSchtmPage implements OnInit {
 
   private subchapter:subchapter;
   private data = {}
-  private scht_id
-  private cht_id
+  private cht_id;  
+  private scht_id;
+  private sub_id;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +36,7 @@ export class EditSchtmPage implements OnInit {
 
 
   async ionViewDidEnter(){
+    this.sub_id = this.route.snapshot.paramMap.get('id_sub')
     this.scht_id = this.route.snapshot.paramMap.get('id_scht')
     this.cht_id = this.route.snapshot.paramMap.get('id')
     console.log(this.scht_id)
@@ -47,7 +49,7 @@ export class EditSchtmPage implements OnInit {
 
     loading.present()
     
-    this.SubchapterService.get_by_edit(this.cht_id,this.scht_id).subscribe((response) => {
+    this.SubchapterService.get_by_edit(this.scht_id).subscribe((response) => {
       //this.meta = response['meta']
       //console.log(this.meta.table)
       this.subchapter = response['data'][0]
@@ -84,7 +86,7 @@ export class EditSchtmPage implements OnInit {
 
       this.SubchapterService.update(this.subchapter.scht_id, this.subchapter.scht_sequence, scht_name, this.subchapter.scht_status, this.subchapter.scht_cht_id).subscribe((res: any) => {
         console.log(res)
-        this.navCtrl.navigateBack('/schtm/' + this.subchapter.scht_cht_id + '/' + this.subchapter.scht_id);
+        this.navCtrl.navigateBack('/schtm/' + this.subchapter.scht_cht_id + '/' + this.sub_id);
       }, error => console.log(error))
       
     }else{
@@ -93,6 +95,6 @@ export class EditSchtmPage implements OnInit {
   }
 
   back(cht_id,scht_id){
-    this.navCtrl.navigateBack('/schtm/' + this.cht_id + '/' + this.scht_id);
+    this.navCtrl.navigateBack('/schtm/' + this.cht_id+'/'+this.sub_id);
   }
 }

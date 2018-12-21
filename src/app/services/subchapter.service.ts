@@ -50,9 +50,9 @@ export class SubchapterService {
     return this.http.get('http://10.80.6.160:1045/scht/'+scht_id)
   }
 
-  get_by_edit(cht_id,scht_id) {
+  get_by_edit(scht_id) {
     console.log('Deleting : scht_id = '+scht_id)
-    return this.http.get('http://10.80.6.160:1045/scht/'+cht_id+'/'+scht_id)
+    return this.http.get('http://10.80.6.160:1045/scht_by_key/'+scht_id)
   }
 
 

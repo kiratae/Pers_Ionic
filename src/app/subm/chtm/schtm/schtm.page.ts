@@ -113,7 +113,7 @@ export class SchtmPage implements OnInit {
     console.log(`edit: ${id}`)
     console.log(`edit: ${id_scht}`)
     slidingItem.close()
-    this.navCtrl.navigateForward(`edit_schtm/${id_scht}/${id}`)
+    this.navCtrl.navigateForward(`edit_schtm/${id_scht}/${id}/${this.sub_id}`)
   }
 
   async ionViewDidEnter() {
