@@ -105,7 +105,7 @@ export class SchtmPage implements OnInit {
   }
 
   add(){
-    this.navCtrl.navigateForward('schtm_insert/'+this.scht_id);
+    // this.navCtrl.navigateForward('schtm_insert/'+this.scht_id);
   }
 
   edit(id_scht: any,id: any, slidingItem: ItemSliding) {

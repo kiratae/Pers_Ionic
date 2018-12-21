@@ -19,25 +19,24 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button (click)="add()" color="primary"><ion-icon name="add" mode="ios"></ion-icon></ion-fab-button>
       </ion-fab>
 
-      <ion-list  *ngFor="let objective of objectiveLists; let i = index">
+      <ion-list>
 
-          <ion-item-sliding #slidingItem>
-            <ion-item >
+          <ion-item-sliding #slidingItem  *ngFor="let objective of objectiveLists; let i = index">
+            <ion-item>
               {{objective.obj_name}} {{objective.obj_lv_id}}
-              
             </ion-item>
             <ion-item-options side="end">
                 <ion-item-option  color="warning">
-                  <ion-icon name="build" class="big-icon"></ion-icon>
+                  <ion-icon name="create" mode="md" class="big-icon"></ion-icon>
                 </ion-item-option>
                 <ion-item-option  color="danger" (click)="delete(i, objective.obj_id, slidingItem)">
-                  <ion-icon name="trash" class="big-icon"></ion-icon>
+                  <ion-icon name="trash" mode="ios" class="big-icon"></ion-icon>
                 </ion-item-option>
               </ion-item-options>
             </ion-item-sliding>

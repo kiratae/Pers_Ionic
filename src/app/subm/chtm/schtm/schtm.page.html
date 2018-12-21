@@ -19,25 +19,24 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button (click)="add()" color="primary"><ion-icon name="add" mode="ios"></ion-icon></ion-fab-button>
     </ion-fab>
 
-    <ion-list  *ngFor="let subchapter of subchapterLists; let i = index">
+    <ion-list>
 
-        <ion-item-sliding #slidingItem>
-          <ion-item (click)="toSchtm(subchapter.scht_id, slidingItem)">
+        <ion-item-sliding #slidingItem *ngFor="let subchapter of subchapterLists; let i = index">
+          <ion-item (click)="toSchtm(subchapter.scht_id, slidingItem)" detail>
             {{subchapter.scht_name}}
-            
           </ion-item>
           <ion-item-options side="end">
               <ion-item-option  color="warning" (click)="edit(subchapter.scht_cht_id,subchapter.scht_id,slidingItem)">
-                <ion-icon name="create" class="big-icon" mode="md" ></ion-icon>
+                <ion-icon name="create" mode="md" class="big-icon"></ion-icon>
               </ion-item-option>
               <ion-item-option  color="danger" (click)="delete(i, subchapter.scht_id, slidingItem)">
-                <ion-icon name="trash" class="big-icon"></ion-icon>
+                <ion-icon name="trash" mode="ios" class="big-icon"></ion-icon>
               </ion-item-option>
             </ion-item-options>
           </ion-item-sliding>
