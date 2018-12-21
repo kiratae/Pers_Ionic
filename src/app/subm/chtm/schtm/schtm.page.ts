@@ -28,8 +28,9 @@ export class SchtmPage implements OnInit {
    private subchapterLists: subchapter[];
    private subchapter:subchapter;
    private meta: Meta;
-   private sub_id
-   private scht_id
+   private sub_id;
+   private scht_id;
+   private scht_cht_id; 
 
   constructor(
     private navCtrl: NavController,
@@ -105,7 +106,7 @@ export class SchtmPage implements OnInit {
   }
 
   add(){
-    // this.navCtrl.navigateForward('schtm_insert/'+this.scht_id);
+    this.navCtrl.navigateForward('schtm_insert/'+this.scht_id +'/'+this.sub_id);
   }
 
   edit(id_scht: any,id: any, slidingItem: ItemSliding) {

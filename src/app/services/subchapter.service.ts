@@ -26,6 +26,12 @@ export class SubchapterService {
     return this.http.get('http://10.80.6.160:1045/scht/'+cht_id)
   }
 
+  insert(scht_cht_id, scht_sequence, scht_name, scht_status) {
+    console.log(scht_name)
+    let data = { 'scht_cht_id':scht_cht_id, 'scht_sequence':scht_sequence, 'scht_name':scht_name, 'scht_status':scht_status}
+    this.http.post('http://10.80.6.160:1045/cht', JSON.stringify(data), httpOptions).subscribe()
+  }
+
   delete(scht_id) {
     console.log('Deleting : scht_id = '+scht_id)
     this.http.delete('http://10.80.6.160:1045/scht/'+scht_id).subscribe((res: any) => {
